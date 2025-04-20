@@ -1,0 +1,1 @@
+This Bash script is designed to facilitate the management of Homebrew packages on a macOS or Linux system. It performs several important tasks, including updating Homebrew, checking for outdated packages, and searching for potential issues.

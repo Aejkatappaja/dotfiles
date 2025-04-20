@@ -1,0 +1,110 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "icon_theme": "Charmed Icons",
+  "vim_mode": false,
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+
+  "project_panel": {
+    "dock": "right"
+  },
+
+  "gutter": {
+    "line_numbers": true,
+    "code_actions": true,
+    "folds": true
+  },
+
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
+
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+
+  "buffer_font_features": {
+    "calt": true,
+    "ligd": true
+  },
+
+  "auto_update": true,
+  "format_on_save": "on",
+
+  "git_status": true,
+  "git_diff": true,
+
+  "theme": "Tokyo Night",
+
+  "ui_font_size": 16,
+  "ui_font_features": {
+    "calt": true
+  },
+
+  "buffer_font_size": 16,
+
+  "preferred_line_length": 120,
+  "ensure_final_newline_on_save": true,
+  "default_dock_anchor": "right",
+  "remove_trailing_whitespace_on_save": true,
+  "terminal": {
+    "dock": "bottom",
+    "font_size": 16,
+    "copy_on_select": true,
+    "font_family": "JetBrainsMono Nerd Font"
+  },
+  "tabs": {
+    "close_position": "right",
+    "git_status": true
+  },
+  "lsp": {
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": "all",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+          "includeInlayFunctionParameterTypeHints": true,
+          "includeInlayVariableTypeHints": true,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": true,
+          "includeInlayFunctionLikeReturnTypeHints": true,
+          "includeInlayEnumMemberValueHints": true
+        }
+      }
+    },
+    "rust-analyzer": {
+      "formatting": {
+        "enable": true
+      },
+      "initialization_options": {
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      },
+      "procMacro": {
+        "ignored": [
+          // optional:
+          // "component",
+          "server"
+        ]
+      }
+    }
+  }
+}

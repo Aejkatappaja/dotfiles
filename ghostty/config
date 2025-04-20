@@ -1,0 +1,28 @@
+
+# theme = GruvboxDarkHard
+
+theme = tokyonight
+
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+macos-window-shadow = true
+title = " "
+
+font-family = JetBrainsMono Nerd Font Mono
+
+font-size = 16
+
+copy-on-select = clipboard
+
+# Look and Feel
+adjust-underline-position      = 3
+bold-is-bright                 = true
+cursor-invert-fg-bg            = true
+cursor-opacity                 = 0.8
+link-url                       = true
+mouse-hide-while-typing        = true
+background-blur                = true
+background-opacity             = 1
+
+window-padding-x = 10
+window-padding-y = 10
