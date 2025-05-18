@@ -22,6 +22,11 @@ return {
     },
   },
   {
+    "Vallen217/eidolon.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "sainnhe/gruvbox-material",
     priority = 1000,
     config = function()
