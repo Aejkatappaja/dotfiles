@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "icon_theme": "Charmed Icons",
+  "icon_theme": "Catppuccin Mocha",
   "vim_mode": false,
   "features": {
     "edit_prediction_provider": "none"
@@ -33,10 +33,12 @@
     "quick_actions": false
   },
 
+  "buffer_font_size": null,
   "buffer_font_features": {
     "calt": true,
     "ligd": true
   },
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
 
   "auto_update": true,
   "format_on_save": "on",
@@ -50,8 +52,7 @@
   "ui_font_features": {
     "calt": true
   },
-
-  "buffer_font_size": 16,
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
 
   "preferred_line_length": 120,
   "ensure_final_newline_on_save": true,
@@ -59,9 +60,9 @@
   "remove_trailing_whitespace_on_save": true,
   "terminal": {
     "dock": "bottom",
-    "font_size": 16,
+    "font_size": 15,
     "copy_on_select": true,
-    "font_family": "JetBrainsMono Nerd Font"
+    "font_family": "JetBrainsMono Nerd Font Mono"
   },
   "tabs": {
     "close_position": "right",
