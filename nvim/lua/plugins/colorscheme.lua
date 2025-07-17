@@ -39,6 +39,10 @@ return {
       vim.cmd("let g:gruvbox_material_enable_italic=1")
       -- vim.cmd([[colorscheme gruvbox-material]]) -- Set color scheme
     end,
+    {
+      "rose-pine/neovim",
+      name = "rose-pine",
+    },
   },
   {
     "LazyVim/LazyVim",
