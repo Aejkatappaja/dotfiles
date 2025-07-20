@@ -9,15 +9,15 @@
     // If working with tmux, you need to use kitty-icat instead of kitty-direct
     // https://discord.com/channels/1005603569187160125/1324828708128821271/1327261766014599218
     // "type": "kitty",
-    // "type": "kitty-icat",
-    "type": "kitty-direct",
-    "source": "~/.config/fastfetch/images/hn.png",
-    "height": 15,
-    "width": 40,
+    "type": "kitty-icat",
+    // "type": "kitty-direct",
+    "source": "~/.config/fastfetch/images/gopher.png",
+    "height": 10,
+    "width": 30,
     "position": "left",
     "padding": {
-      "top": 5,
-      "right": 2,
+      "top": 4,
+      // "right": 2,
     },
   },
   "display": {
@@ -52,17 +52,17 @@
       "format": "{size-used} / {size-total} ({size-percentage})",
       "keyColor": "red",
     },
-    {
-      "type": "swap",
-      "key": "│ ├SW",
-      "keyColor": "red",
-    },
+    // {
+    //   "type": "swap",
+    //   "key": "│ ├SW",
+    //   "keyColor": "red",
+    // },
     {
       "type": "display",
       "key": "│ ├ ",
       "keyColor": "red",
       // "format": "MONITOR ({name})",
-      "format": "MONITOR ({name}) {width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches, {ppi} ppi)",
+      "format": "Apple {name} {width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches, {ppi} ppi)",
     },
     {
       "type": "memory",
@@ -94,11 +94,11 @@
       "key": "│ ├󰏖 ",
       "keyColor": "green",
     },
-    {
-      "type": "localip",
-      "key": "│ ├IP",
-      "keyColor": "green",
-    },
+    // {
+    //   "type": "localip",
+    //   "key": "│ ├IP",
+    //   "keyColor": "green",
+    // },
     {
       "type": "shell",
       "key": "└ └ ",
@@ -109,22 +109,22 @@
       "key": " DE ",
       "keyColor": "blue",
     },
-    {
-      "type": "lm",
-      "key": "│ ├ ",
-      "keyColor": "blue",
-    },
-    {
-      "type": "wm",
-      "key": "│ ├ ",
-      "keyColor": "blue",
-    },
-    {
-      "key": "│ ├ ",
-      "keyColor": "blue",
-      "type": "command",
-      "text": "pgrep yabai &> /dev/null && echo yabai || echo Quartz Compositor",
-    },
+    // {
+    //   "type": "lm",
+    //   "key": "│ ├ ",
+    //   "keyColor": "blue",
+    // },
+    // {
+    //   "type": "wm",
+    //   "key": "│ ├ ",
+    //   "keyColor": "blue",
+    // },
+    // {
+    //   "key": "│ ├ ",
+    //   "keyColor": "blue",
+    //   "type": "command",
+    //   "text": "pgrep yabai &> /dev/null && echo yabai || echo Quartz Compositor",
+    // },
     {
       "type": "terminal",
       "key": "│ ├ ",
