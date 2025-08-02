@@ -1,15 +1,52 @@
 
-# theme = GruvboxDarkHard
+#theme = GruvboxDarkHard
 
-theme = tokyonight
+#theme = tokyonight
+
+theme = rose-pine
+
+
+# theming
+# background = #282828
+# foreground = #ebdbb2
+
+# palette = 0=#3c3836
+# palette = 8=#928374
+
+# palette = 1=#cc241d
+# palette = 9=#fb4934
+
+# palette = 2=#98971a
+# palette = 10=#b8bb26
+
+# palette = 3=#d79921
+# palette = 11=#fabd2f
+
+# palette = 4=#458588
+# palette = 12=#83a598
+
+# palette = 5=#b16286
+# palette = 13=#d3869b
+
+# palette = 6=#689d6a
+# palette = 14=#8ec07c
+
+# palette = 7=#a89984
+# palette = 15=#ebdbb2
+
+# cursor-color = #928374
+# cursor-text = #ebdbb2
+
+# selection-background = #928374
+# selection-foreground = #ebdbb2
 
 macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = transparent
 macos-option-as-alt = true
-macos-window-shadow = true
 title = " "
 
-font-family = JetBrainsMono Nerd Font Mono
-
+# font-family = JetBrainsMono Nerd Font Mono
+font-family = Liga SFMono Nerd Font
 font-size = 16
 
 copy-on-select = clipboard
