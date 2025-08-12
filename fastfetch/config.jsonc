@@ -62,7 +62,8 @@
       "key": "│ ├ ",
       "keyColor": "red",
       // "format": "MONITOR ({name})",
-      "format": "Apple {name} {width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches, {ppi} ppi)",
+      // "format": "Apple {name} {width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches, {ppi} ppi)",
+      "format": " {name} 5K {ppi} ppi",
     },
     {
       "type": "memory",

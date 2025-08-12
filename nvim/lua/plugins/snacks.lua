@@ -4,6 +4,9 @@ return {
   lazy = false,
 
   opts = {
+    indent = {
+      scope = { enabled = false },
+    },
     dashboard = {
       preset = {
         pick = function(cmd, opts)
