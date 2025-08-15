@@ -1,53 +1,24 @@
 
 #theme = GruvboxDarkHard
 
-#theme = tokyonight
+# theme = tokyonight
 
-theme = rose-pine
-
-
-# theming
-# background = #282828
-# foreground = #ebdbb2
-
-# palette = 0=#3c3836
-# palette = 8=#928374
-
-# palette = 1=#cc241d
-# palette = 9=#fb4934
-
-# palette = 2=#98971a
-# palette = 10=#b8bb26
-
-# palette = 3=#d79921
-# palette = 11=#fabd2f
-
-# palette = 4=#458588
-# palette = 12=#83a598
-
-# palette = 5=#b16286
-# palette = 13=#d3869b
-
-# palette = 6=#689d6a
-# palette = 14=#8ec07c
-
-# palette = 7=#a89984
-# palette = 15=#ebdbb2
-
-# cursor-color = #928374
-# cursor-text = #ebdbb2
-
-# selection-background = #928374
-# selection-foreground = #ebdbb2
+# theme = rose-pine
 
 macos-titlebar-proxy-icon = hidden
-macos-titlebar-style = transparent
+macos-titlebar-style = hidden
 macos-option-as-alt = true
 title = " "
 
 # font-family = JetBrainsMono Nerd Font Mono
-font-family = Liga SFMono Nerd Font
-font-size = 16
+# font-family = Go Mono
+# font-family = Liga SFMono Nerd Font
+# font-family = Hack Nerd Font Mono
+font-family = Hackd
+# font-family = Berkeley Mono Trial
+
+
+font-size = 18
 
 copy-on-select = clipboard
 
@@ -63,3 +34,33 @@ background-opacity             = 1
 
 window-padding-x = 10
 window-padding-y = 10
+
+# Vague for Ghostty
+# -------------------
+# Theme Author: vague2k <ilovedrawing056@gmail.com>
+# Ported by:	skewb1k <skewb1kunix@gmail.com>
+# License:  	MIT License
+# Upstream: 	https://github.com/vague2k/vague.nvim/blob/main/extras/ghostty/vague
+
+palette = 0=#252530
+palette = 1=#d8647e
+palette = 2=#7fa563
+palette = 3=#f3be7c
+palette = 4=#6e94b2
+palette = 5=#bb9dbd
+palette = 6=#aeaed1
+palette = 7=#cdcdcd
+palette = 8=#606079
+palette = 9=#e08398
+palette = 10=#99b782
+palette = 11=#f5cb96
+palette = 12=#8ba9c1
+palette = 13=#c9b1ca
+palette = 14=#bebeda
+palette = 15=#d7d7d7
+
+background = #141415
+foreground = #cdcdcd
+cursor-color = #cdcdcd
+selection-background = #252530
+selection-foreground = #cdcdcd
