@@ -6,14 +6,14 @@ return {
       chunk = {
         enable = true,
         style = {
-          { fg = "#2DC3DF" },
+          { fg = "#3F8FB0" },
         },
         use_treesitter = true,
       },
       line_num = {
         enable = true,
         style = {
-          { fg = "#2DC3DF" },
+          { fg = "#3F8FB0" },
         },
       },
       blank = {
