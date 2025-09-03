@@ -21,7 +21,7 @@ options=(
   # active_color=0xe05c9fbf
 
   # tokyonight blue
-  # active_color=0xFF3F8FB0
+  active_color=0xFF3F8FB0
   #
   # gruvbox material blue
   # active_color=0xFF83A598
@@ -29,7 +29,7 @@ options=(
   # gruvbox material cream
   # active_color=0xFFE1CCA9
   #rose-pine
-  active_color=0xFFF9B34C
+  # active_color=0xFFF9B34C
 
   # catppuccin lavender
   # active_color=0xe0b4befe
