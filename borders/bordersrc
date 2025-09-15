@@ -21,13 +21,15 @@ options=(
   # active_color=0xe05c9fbf
 
   # tokyonight blue
-  active_color=0xFF3F8FB0
+  # active_color=0xFF3F8FB0
   #
   # gruvbox material blue
   # active_color=0xFF83A598
   # active_color=0xFF80AA9D
   # gruvbox material cream
   # active_color=0xFFE1CCA9
+  # active_color=0xFF73DACA
+  active_color=0xFF2DC3DF
   #rose-pine
   # active_color=0xFFF9B34C
 
