@@ -28,7 +28,7 @@
     {
       "type": "custom",
       "format": "┌─────────────Hardware─────────────┐",
-      "outputColor": "cyan",
+      "outputColor": "blue",
     },
     {
       "type": "host",
@@ -73,12 +73,12 @@
     {
       "type": "custom",
       "format": "└──────────────────────────────────┘",
-      "outputColor": "cyan",
+      "outputColor": "blue",
     },
     {
       "type": "custom",
       "format": "┌─────────────Software─────────────┐",
-      "outputColor": "cyan",
+      "outputColor": "blue",
     },
     {
       "type": "os",
@@ -139,13 +139,13 @@
     {
       "type": "custom",
       "format": "└──────────────────────────────────┘",
-      "outputColor": "cyan",
+      "outputColor": "blue",
     },
     {
       "type": "custom",
       // "format": "┌───────────Uptime / Age───────────┐",
       "format": "┌──────────────Uptime──────────────┐",
-      "outputColor": "cyan",
+      "outputColor": "blue",
     },
     // {
     //   "type": "command",
@@ -161,7 +161,7 @@
     {
       "type": "custom",
       "format": "└──────────────────────────────────┘",
-      "outputColor": "cyan",
+      "outputColor": "blue",
     },
   ],
 }
