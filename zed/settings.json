@@ -7,11 +7,24 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "icon_theme": "Catppuccin Mocha",
+  "ssh_connections": [
+    {
+      "host": "159.65.120.186",
+      "username": "aejko",
+      "projects": [
+        {
+          "paths": ["/home/aejko"]
+        }
+      ]
+    }
+  ],
+  "icon_theme": "Colored Zed Icons Theme Dark",
   "vim_mode": false,
   "features": {
     "edit_prediction_provider": "none"
   },
+
+  // "lsp_document_colors": "background",
 
   "project_panel": {
     "dock": "right"
@@ -19,7 +32,6 @@
 
   "gutter": {
     "line_numbers": true,
-    "code_actions": true,
     "folds": true
   },
 
@@ -33,36 +45,61 @@
     "quick_actions": false
   },
 
-  "buffer_font_size": null,
+  "buffer_font_size": 18,
   "buffer_font_features": {
     "calt": true,
     "ligd": true
   },
-  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  // "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_family": "GeistMono Nerd Font Mono",
+  // "buffer_font_family": "Monaspace Neon",
+  // "buffer_font_family": "Liga SFMono Nerd Font",
+  // "buffer_font_family": "Hack Mono Nerd Font",
+  // "buffer_font_family": "Berkeley Mono Trial",
+  // "buffer_font_family": "Hackd",
+
+  // "buffer_font_family": "FiraCode Nerd Font Mono",
+  // "buffer_font_family": "DepartureMono Nerd Font Mono",
 
   "auto_update": true,
   "format_on_save": "on",
 
-  "git_status": true,
-  "git_diff": true,
-
   "theme": "Tokyo Night",
+  // "experimental.theme_overrides": {
+  //   "editor.background": "#000000",
+  //   "panel.background": "#000000",
+  //   "toolbar.background": "#000000",
+  //   "status_bar.background": "#000000",
+  //   "tab_bar.background": "#000000",
+  //   "surface.background": "#000000",
+  //   "terminal.background": "#000000",
+  //   "editor.subheader.background": "#000000",
+  //   "elevated_surface.background": "#000000",
+  //   "tab.active_background": "#000000",
+  //   "tab.inactive_background": "#000000",
+  //   "title_bar.background": "#000000",
+  //   "editor.gutter.background": "#000000"
+  // },
 
-  "ui_font_size": 16,
+  "ui_font_size": 18,
   "ui_font_features": {
     "calt": true
   },
-  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  // "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "ui_font_family": "GeistMono Nerd Font Mono",
+  // "ui_font_family": "Berkeley Mono Trial",
+  // "ui_font_family": "Hackd",
+  // "ui_font_family": "DepartureMono Nerd Font Mono",
 
   "preferred_line_length": 120,
   "ensure_final_newline_on_save": true,
-  "default_dock_anchor": "right",
   "remove_trailing_whitespace_on_save": true,
   "terminal": {
     "dock": "bottom",
     "font_size": 15,
     "copy_on_select": true,
-    "font_family": "JetBrainsMono Nerd Font Mono"
+    // "font_family": "Hackd"
+    "font_family": "GeistMono Nerd Font Mono"
   },
   "tabs": {
     "close_position": "right",
@@ -84,9 +121,6 @@
       }
     },
     "rust-analyzer": {
-      "formatting": {
-        "enable": true
-      },
       "initialization_options": {
         "inlayHints": {
           "maxLength": null,
@@ -98,13 +132,6 @@
             "enable": "always"
           }
         }
-      },
-      "procMacro": {
-        "ignored": [
-          // optional:
-          // "component",
-          "server"
-        ]
       }
     }
   }
