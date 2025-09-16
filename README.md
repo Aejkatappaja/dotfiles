@@ -44,8 +44,7 @@ git clone <your-repo-url> ~/.config
 ├── borders/       # Window border decorations
 ├── fastfetch/     # System info display
 ├── bin/           # Custom shell scripts (including brew script)
-├── wallpapers/    # Custom wallpapers
-└── colorschemes/  # Color scheme configurations
+└── wallpapers/    # Custom wallpapers
 ```
 
 ## 🔧 Requirements
