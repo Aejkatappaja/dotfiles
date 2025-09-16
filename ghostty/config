@@ -14,8 +14,6 @@ bold-is-bright                 = true
 
 copy-on-select                 = clipboard
 
-auto-update                    = check
-
 title                          = " "
 
 macos-titlebar-proxy-icon      = hidden
@@ -41,3 +39,4 @@ window-padding-y               = 10
 window-padding-balance = true
 window-save-state              = always
 
+custom-shader                  = shaders/cursor_smear.glsl
