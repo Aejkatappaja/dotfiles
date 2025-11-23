@@ -11,13 +11,14 @@
     // "type": "kitty",
     "type": "kitty-icat",
     // "type": "kitty-direct",
-    "source": "~/.config/fastfetch/images/gopher.png",
-    "height": 10,
-    "width": 30,
+    "source": "~/.config/fastfetch/images/pink-monster.png",
+    "height": 25,
+    "width": 25,
     "position": "left",
     "padding": {
       "top": 4,
-      // "right": 2,
+      "left": 2,
+      "right": 5,
     },
   },
   "display": {

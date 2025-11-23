@@ -11,7 +11,7 @@
 --   },
 -- }
 return {
-  "echasnovski/mini.icons",
+  "nvim-mini/mini.icons",
   opts = function(_, opts)
     opts = opts or {}
     opts.extension = vim.tbl_deep_extend("force", opts.extension or {}, {
