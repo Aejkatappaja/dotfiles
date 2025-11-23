@@ -7,5 +7,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   -- floating popups
   command = "hi NormalFloat guibg=#1E2021 |" .. "hi FloatBorder guibg=#1E2021",
 })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyVimStarted",
+  callback = function()
+    require("gitsigns").toggle_current_line_blame(true)
+  end,
+})
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")

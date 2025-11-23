@@ -39,13 +39,11 @@ return {
   },
   {
     "vague2k/vague.nvim",
-    lazy = true, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other plugins
+    lazy = true,
+    priority = 1000,
     config = function()
-      -- NOTE: you do not need to call setup if you don't want to.
       require("vague").setup({
         transparent = true,
-        -- optional configuration here
         colors = {
           floatBorder = "#252530",
         },
@@ -53,41 +51,6 @@ return {
       ColorMyPencils("vague")
     end,
   },
-  -- {
-  --   "AlexvZyl/nordic.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("nordic").setup({
-  --       transparent = {
-  --         -- Enable transparent background.
-  --         bg = true,
-  --         -- Enable transparent background for floating windows.
-  --         float = true,
-  --       },
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   "rose-pine/neovim",
-  --   name = "rose-pine",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("rose-pine").setup({
-  --       extend_background_behind_borders = true,
-  --       variant = "moon", -- Choisissez le variant approprié
-  --       disable_background = true, -- Pour la transparence
-  --       styles = {
-  --         sidebars = "transparent", -- Pour les barres latérales
-  --         floats = "transparent", -- Pour les fenêtres flottantes
-  --         bold = true,
-  --         italic = false,
-  --         transparency = true,
-  --       },
-  --     })
-  --   end,
-  -- },
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -101,7 +64,7 @@ return {
         styles = {
           sidebars = "transparent",
           floats = "transparent",
-          bold = true,
+          bold = false,
           italic = false,
           transparency = true,
         },

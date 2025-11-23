@@ -1,16 +1,26 @@
 # theme = vague2k
 # theme = rose-pine
-# theme = rose-pine-moon
+# theme = Rose Pine Moon
 # background = #000000
 # background = #141415
 # background = #292828
 # background = #222123
+# background = #141415
+background = #1a1b26
+
 
 theme                          = tokyonight
+# theme                          = vague2k
 
 font-family                    = GeistMono Nerd Font Mono
+# font-family                    = Berkeley Mono Trial
+
+background-image               = /Users/anton/.config/wallpapers/mima_blurred.png
+background-image-fit           = cover
+background-image-opacity       = 0.1
 font-size                      = 20
-bold-is-bright                 = true
+font-style-bold                = "false"
+# bold-is-bright                 = true
 
 copy-on-select                 = clipboard
 
@@ -31,7 +41,6 @@ cursor-style                   = block
 
 link-url                       = true
 
-background-blur                = true
 background-opacity             = 1
 
 window-padding-x               = 10
