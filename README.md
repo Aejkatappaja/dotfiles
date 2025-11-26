@@ -20,7 +20,7 @@ My personal dotfiles collection for a productive and beautiful development envir
 
 ```bash
 # Clone the repository
-git clone <your-repo-url> ~/.config
+git clone git@github.com:Aejkatappaja/dotfiles.git
 
 # Install dependencies (if needed)
 # - Neovim
@@ -64,4 +64,4 @@ git clone <your-repo-url> ~/.config
 
 ## 📝 License
 
-This project is open source and available under the [WTFPL](LICENSE) - Do What The Fuck You Want To Public License. 
+This project is open source and available under the [WTFPL](LICENSE) - Do What The Fuck You Want To Public License.
