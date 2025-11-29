@@ -1,24 +1,26 @@
 # theme = vague2k
 # theme = rose-pine
-# theme = Rose Pine Moon
+# theme = Rose Pine
+# theme = Catppuccin Mocha
 # background = #000000
 # background = #141415
 # background = #292828
 # background = #222123
 # background = #141415
-background = #1a1b26
+# background = #1a1b26
 
 
 theme                          = tokyonight
 # theme                          = vague2k
 
-font-family                    = GeistMono Nerd Font Mono
+# font-family                    = GeistMono Nerd Font Mono
 # font-family                    = Berkeley Mono Trial
+font-family                    = JetBrainsMono Nerd Font Mono
 
-background-image               = /Users/anton/.config/wallpapers/mima_blurred.png
+background-image               = /Users/anton/.config/wallpapers/wallpaper-theme-converter (2).png
 background-image-fit           = cover
 background-image-opacity       = 0.1
-font-size                      = 20
+font-size                      = 22
 font-style-bold                = "false"
 # bold-is-bright                 = true
 
