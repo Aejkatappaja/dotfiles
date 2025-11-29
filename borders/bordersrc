@@ -1,7 +1,7 @@
 #!/bin/bash
 
 options=(
-  style=round
+  # style=round
   width=10.0
   hidpi=on
   # active_color=0xe0a9b665
@@ -9,6 +9,8 @@ options=(
   # catppuccin mauve
   # active_color=0xe0c6a2f0
 
+  # active_color=0xFF9CCFD9
+  # active_color=0xFFC4A7E7
   # gruv cream
   # active_color=0xFFd4be99
 
@@ -29,9 +31,14 @@ options=(
   # gruvbox material cream
   # active_color=0xFFE1CCA9
   # active_color=0xFF73DACA
-  active_color=0xFF2DC3DF
+  #
+  active_color=0xFF7AA2F7
+  #
+  # TOKYO NIGHT BLUE
+  # active_color=0xFF2DC3DF
   #rose-pine
   # active_color=0xFFF9B34C
+  # active_color=0xFFE99B97
 
   # catppuccin lavender
   # active_color=0xe0b4befe
@@ -39,9 +46,9 @@ options=(
   # active_color=0xe0fe8019
   # catppuccin blue inactive
   # inactive_color=0xff89b4fa
-  r # inactive_color=0xff414550
+  # inactive_color=0xff414550
   # background_color=0x302c2e34
-  whitelist="ghostty"
+  whitelist="ghostty,kitty"
 )
 
 borders "${options[@]}"
