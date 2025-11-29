@@ -8,6 +8,19 @@ end
 
 return {
   {
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
+    opts = {
+      flavour = "mocha",
+      transparent_background = true,
+      float = {
+        transparent = true, -- enable transparent floating windows
+      },
+      no_italic = true,
+    },
+  },
+  {
     "folke/tokyonight.nvim",
     priority = 1000,
     lazy = false,

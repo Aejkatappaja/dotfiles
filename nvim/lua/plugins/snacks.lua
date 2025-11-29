@@ -50,15 +50,24 @@ return {
           --},
         },
         explorer = {
-          -- auto_close = true,
+          jump = {
+            close = true,
+          },
           layout = {
-            -- preset = "default",
-            preset = "sidebar",
-            layout = { position = "right" },
-            preview = false,
+            preset = "default",
             auto_hide = { "input" },
           },
         },
+        -- explorer = {
+        --   -- auto_close = true,
+        --   layout = {
+        --     -- preset = "default",
+        --     preset = "sidebar",
+        --     layout = { position = "right" },
+        --     preview = false,
+        --     auto_hide = { "input" },
+        --   },
+        -- },
       },
     },
   },
