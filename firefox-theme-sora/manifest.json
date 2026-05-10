@@ -1,0 +1,66 @@
+{
+  "manifest_version": 2,
+  "name": "Sora",
+  "short_name": "sora",
+  "version": "1.0.0",
+  "description": "Sora theme for Firefox — a moody dark palette with cyan accents.",
+  "author": "anton",
+  "homepage_url": "https://github.com/Aejkatappaja/sora",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sora@aejkatappaja.theme",
+      "strict_min_version": "60.0"
+    }
+  },
+
+  "theme": {
+    "colors": {
+      "frame":                       "#0a0c12",
+      "frame_inactive":              "#0a0c12",
+
+      "tab_background_text":         "#9aa4b8",
+      "tab_text":                    "#dce4f0",
+      "tab_selected":                "#0e1018",
+      "tab_line":                    "#80c8e0",
+      "tab_loading":                 "#d4b878",
+      "tab_background_separator":    "#222838",
+
+      "toolbar":                     "#0e1018",
+      "toolbar_text":                "#c8d0e0",
+      "toolbar_top_separator":       "#0a0c12",
+      "toolbar_bottom_separator":    "#222838",
+      "toolbar_vertical_separator":  "#222838",
+
+      "toolbar_field":               "#14161e",
+      "toolbar_field_text":          "#dce4f0",
+      "toolbar_field_border":        "#222838",
+      "toolbar_field_focus":         "#171a24",
+      "toolbar_field_text_focus":    "#dce4f0",
+      "toolbar_field_border_focus":  "#80c8e0",
+      "toolbar_field_highlight":     "#1e2430",
+      "toolbar_field_highlight_text":"#dce4f0",
+
+      "popup":                       "#0e1018",
+      "popup_text":                  "#c8d0e0",
+      "popup_border":                "#222838",
+      "popup_highlight":             "#1e2430",
+      "popup_highlight_text":        "#dce4f0",
+
+      "sidebar":                     "#0a0c12",
+      "sidebar_text":                "#c8d0e0",
+      "sidebar_border":              "#222838",
+      "sidebar_highlight":           "#1e2430",
+      "sidebar_highlight_text":      "#dce4f0",
+
+      "bookmark_text":               "#c8d0e0",
+      "button_background_active":    "#1e2430",
+      "button_background_hover":     "#171a24",
+      "icons":                       "#9aa4b8",
+      "icons_attention":             "#d4b878",
+
+      "ntp_background":              "#0e1018",
+      "ntp_text":                    "#c8d0e0"
+    }
+  }
+}
