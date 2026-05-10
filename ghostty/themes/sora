@@ -1,0 +1,29 @@
+# Zenith - the sky at its deepest point
+# https://github.com/YOUR_USERNAME/zenith.nvim
+
+background = #0e1018
+foreground = #c8d0e0
+cursor-color = #80c8e0
+cursor-text = #0e1018
+selection-foreground = #dce4f0
+selection-background = #1e2430
+
+# Normal colors
+palette = 0=#0e1018
+palette = 1=#c46c78
+palette = 2=#90c8a0
+palette = 3=#d4b878
+palette = 4=#80c8e0
+palette = 5=#b0a0d8
+palette = 6=#78b8b0
+palette = 7=#c8d0e0
+
+# Bright colors
+palette = 8=#4a5468
+palette = 9=#d88898
+palette = 10=#a8d8b4
+palette = 11=#e0c888
+palette = 12=#98d8f0
+palette = 13=#c4b4e8
+palette = 14=#90d0c8
+palette = 15=#dce4f0
