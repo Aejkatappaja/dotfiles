@@ -16,10 +16,13 @@ return {
     opts = opts or {}
     opts.extension = vim.tbl_deep_extend("force", opts.extension or {}, {
       go = { glyph = "", hl = "GoIcon" },
+      rs = { glyph = "", hl = "RustIcon" },
     })
     opts.file = vim.tbl_deep_extend("force", opts.file or {}, {
       ["go.mod"] = { glyph = "", hl = "GoIcon" },
       ["go.sum"] = { glyph = "", hl = "GoIcon" },
+      ["Cargo.toml"] = { glyph = "", hl = "RustIcon" },
+      ["Cargo.lock"] = { glyph = "", hl = "RustIcon" },
     })
     return opts
   end,
@@ -29,10 +32,17 @@ return {
     local function set_go_icon_hl()
       vim.api.nvim_set_hl(0, "GoIcon", { fg = "#7AD4FD" }) -- ta couleur
     end
+    local function set_rust_icon_hl()
+      vim.api.nvim_set_hl(0, "RustIcon", { fg = "#dea584" })
+    end
     set_go_icon_hl()
+    set_rust_icon_hl()
     -- Si tu changes de colorscheme, réapplique le highlight
     vim.api.nvim_create_autocmd("ColorScheme", {
-      callback = set_go_icon_hl,
+      callback = function()
+        set_go_icon_hl()
+        set_rust_icon_hl()
+      end,
     })
   end,
 }
