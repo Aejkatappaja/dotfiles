@@ -1,0 +1,29 @@
+# Sora theme for delta (git-delta)
+# https://github.com/aejkatappaja/sora.nvim
+#
+# Add to your .gitconfig:
+#   [include]
+#     path = /path/to/sora.gitconfig
+#
+# For syntax highlighting, install the bat theme:
+#   cp /path/to/extras/bat/sora.tmTheme "$(bat --config-dir)/themes/"
+#   bat cache --build
+
+[delta]
+  syntax-theme = Sora
+  minus-style = syntax "#1c1014"
+  minus-emph-style = syntax bold "#2a1420"
+  plus-style = syntax "#0e1c16"
+  plus-emph-style = syntax bold "#142c1c"
+  hunk-header-style = "#9aa4b8" italic
+  hunk-header-decoration-style = "#222838" box
+  file-style = "#80c8e0" bold
+  file-decoration-style = "#80c8e0" ul
+  line-numbers-minus-style = "#c46c78"
+  line-numbers-plus-style = "#68b080"
+  line-numbers-zero-style = "#364050"
+  line-numbers-left-style = "#364050"
+  line-numbers-right-style = "#364050"
+  commit-decoration-style = "#80c8e0" box
+  commit-style = "#d4b878" bold
+  blame-palette = "#0e1018" "#14161e" "#171a24" "#1e2430"
