@@ -28,7 +28,6 @@ theme is [sora](https://github.com/Aejkatappaja/sora), my own colorscheme. cool 
 
 ```
 nvim/             lazyvim
-zed/              zed
 ghostty/          ghostty + sora
 kitty/            kitty
 tmux/             tmux
