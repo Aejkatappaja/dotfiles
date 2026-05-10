@@ -85,7 +85,7 @@ sbar.add("bracket", { cal.name }, {
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
 clock:subscribe({ "forced", "routine", "system_woke" }, function(env)
-	clock:set({ label = os.date("%H:%M") })
+	clock:set({ label = os.date("%I:%M %p"):lower() })
 end)
 
 cal:subscribe({ "forced", "routine", "system_woke" }, function(env)
