@@ -718,11 +718,13 @@
 
   function tick() {
     const d = new Date();
-    ch.textContent = pad(d.getHours());
+    const h24 = d.getHours();
+    const h12 = ((h24 + 11) % 12) + 1;
+    ch.textContent = pad(h12);
     cm.textContent = pad(d.getMinutes());
-    cs.textContent = pad(d.getSeconds());
+    cs.textContent = h24 < 12 ? "am" : "pm";
     cs.style.opacity = "1";
-    setTimeout(() => { cs.style.opacity = "0.6"; }, 120);
+    setTimeout(() => { cs.style.opacity = "0.7"; }, 120);
 
     cdate.innerHTML = `<b>${fmtDate(d)}</b>`;
 
