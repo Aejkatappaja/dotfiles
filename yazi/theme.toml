@@ -1,161 +1,83 @@
-[flavor]
-use = "tokyo-night"
-# For Yazi 0.4 and above
-dark = "tokyo-night"
-#
-# vim:fileencoding=utf-8:foldmethod=marker
+# Sora theme for Yazi
+# https://github.com/aejkatappaja/sora.nvim
 
-# # : Manager {{{
-#
-# [manager]
-# cwd = { fg = "#83a598" }
-#
-# # Hovered
-# hovered = { fg = "#282828", bg = "#83a598" }
-# preview_hovered = { underline = true }
-#
-# # Find
-# find_keyword = { fg = "#b8bb26", italic = true }
-# find_position = { fg = "#fe8019", bg = "reset", italic = true }
-#
-# # Marker
-# marker_selected = { fg = "#b8bb26", bg = "#b8bb26" }
-# marker_copied = { fg = "#b8bb26", bg = "#b8bb26" }
-# marker_cut = { fg = "#fb4934", bg = "#fb4934" }
-#
-# # Tab
-# tab_active = { fg = "#282828", bg = "#504945" }
-# tab_inactive = { fg = "#a89984", bg = "#3c3836" }
-# tab_width = 1
-#
-# # Border
-# border_symbol = "│"
-# border_style = { fg = "#665c54" }
-#
-# # Highlighting
-# # syntect_theme = "~/.config/yazi/Gruvbox-Dark.tmTheme"
-#
-# # : }}}
-#
-#
-# # : Status {{{
-#
-# [status]
-# separator_open = ""
-# separator_close = ""
-# separator_style = { fg = "#3c3836", bg = "#3c3836" }
-#
-#
-# # Progress
-# progress_label = { fg = "#ebdbb2", bold = true }
-# progress_normal = { fg = "#504945", bg = "#3c3836" }
-# progress_error = { fg = "#fb4934", bg = "#3c3836" }
-#
-# # Permissions
-# permissions_t = { fg = "#504945" }
-# permissions_r = { fg = "#b8bb26" }
-# permissions_w = { fg = "#fb4934" }
-# permissions_x = { fg = "#b8bb26" }
-# permissions_s = { fg = "#665c54" }
-#
-# # : }}}
-#
-#
-# # : mode {{{
-#
-# [mode]
-# normal_main = { fg = "#282828", bg = "#A89984", bold = true }
-# normal_alt = { fg = "#282828", bg = "#A89984", bold = true }
-#
-# select_main = { fg = "#282828", bg = "#b8bb26", bold = true }
-# select_alt = { fg = "#282828", bg = "#b8bb26", bold = true }
-#
-# unset_main = { fg = "#282828", bg = "#d3869b", bold = true }
-# unset_alt = { fg = "#282828", bg = "#d3869b", bold = true }
-#
-# # : }}}
-#
-#
-# # : Input {{{
-#
-# [input]
-# border = { fg = "#bdae93" }
-# title = {}
-# value = {}
-# selected = { reversed = true }
-#
-# # : }}}
-#
-#
-# # : Select {{{
-#
-# [select]
-# border = { fg = "#504945" }
-# active = { fg = "#fe8019" }
-# inactive = {}
-#
-# # : }}}
-#
-#
-# # : Tasks {{{
-#
-# [tasks]
-# border = { fg = "#504945" }
-# title = {}
-# hovered = { underline = true }
-#
-# # : }}}
-#
-#
-# # : Which {{{
-#
-# [which]
-# mask = { bg = "#3c3836" }
-# cand = { fg = "#83a598" }
-# rest = { fg = "#928374" }
-# desc = { fg = "#fe8019" }
-# separator = "  "
-# separator_style = { fg = "#504945" }
-#
-# # : }}}
-#
-#
-# # : Help {{{
-#
-# [help]
-# on = { fg = "#fe8019" }
-# exec = { fg = "#83a598" }
-# desc = { fg = "#928374" }
-# hovered = { bg = "#504945", bold = true }
-# footer = { fg = "#3c3836", bg = "#a89984" }
-#
-# # : }}}
-#
-#
-# # : File-specific styles {{{
-#
-# [filetype]
-#
-# rules = [
-#   # Images
-#   { mime = "image/*", fg = "#83a598" },
-#
-#   # Videos
-#   { mime = "video/*", fg = "#b8bb26" },
-#   { mime = "audio/*", fg = "#b8bb26" },
-#
-#   # Archives
-#   { mime = "application/zip", fg = "#fe8019" },
-#   { mime = "application/gzip", fg = "#fe8019" },
-#   { mime = "application/x-tar", fg = "#fe8019" },
-#   { mime = "application/x-bzip", fg = "#fe8019" },
-#   { mime = "application/x-bzip2", fg = "#fe8019" },
-#   { mime = "application/x-7z-compressed", fg = "#fe8019" },
-#   { mime = "application/x-rar", fg = "#fe8019" },
-#
-#   # Fallback
-#   { name = "*", fg = "#a89984" },
-#   { name = "*/", fg = "#83a598" },
-# ]
-#
-# # : }}}
+[manager]
+cwd = { fg = "#80c8e0" }
+hovered = { bg = "#1e2430" }
+preview_hovered = { bg = "#14161e" }
+find_keyword = { fg = "#d4b878", bold = true }
+find_position = { fg = "#80c8e0", italic = true }
+marker_selected = { fg = "#80c8e0", bg = "#80c8e0" }
+marker_copied = { fg = "#90c8a0", bg = "#90c8a0" }
+marker_cut = { fg = "#c46c78", bg = "#c46c78" }
+tab_active = { fg = "#c8d0e0", bg = "#14161e" }
+tab_inactive = { fg = "#586478", bg = "#0a0c12" }
+tab_width = 1
+border_symbol = "│"
+border_style = { fg = "#222838" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#14161e", bg = "#14161e" }
+mode_normal = { fg = "#0e1018", bg = "#80c8e0", bold = true }
+mode_select = { fg = "#0e1018", bg = "#b0a0d8", bold = true }
+mode_unset = { fg = "#0e1018", bg = "#d0909c", bold = true }
+progress_label = { fg = "#c8d0e0" }
+progress_normal = { fg = "#222838" }
+progress_error = { fg = "#c46c78" }
+
+[input]
+border = { fg = "#80c8e0" }
+title = {}
+value = {}
+selected = { reversed = true }
+
+[select]
+border = { fg = "#80c8e0" }
+active = { fg = "#80c8e0" }
+inactive = {}
+
+[tasks]
+border = { fg = "#80c8e0" }
+title = {}
+hovered = { underline = true }
+
+[which]
+mask = { bg = "#0a0c12" }
+cand = { fg = "#80c8e0" }
+rest = { fg = "#586478" }
+desc = { fg = "#9aa4b8" }
+separator = "  "
+separator_style = { fg = "#222838" }
+
+[help]
+on = { fg = "#80c8e0" }
+exec = { fg = "#9aa4b8" }
+desc = { fg = "#586478" }
+hovered = { bg = "#1e2430", bold = true }
+footer = { fg = "#586478", bg = "#0a0c12" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#d0a888" },
+  { mime = "video/*", fg = "#d4b878" },
+  { mime = "audio/*", fg = "#d4b878" },
+  { mime = "application/zip", fg = "#b0a0d8" },
+  { mime = "application/gzip", fg = "#b0a0d8" },
+  { mime = "application/x-tar", fg = "#b0a0d8" },
+  { mime = "application/x-bzip2", fg = "#b0a0d8" },
+  { mime = "application/x-7z-compressed", fg = "#b0a0d8" },
+  { mime = "application/x-rar", fg = "#b0a0d8" },
+  { url = "*.rs", fg = "#d0a888" },
+  { url = "*.lua", fg = "#80c8e0" },
+  { url = "*.ts", fg = "#80c8e0" },
+  { url = "*.js", fg = "#d4b878" },
+  { url = "*.py", fg = "#90c8a0" },
+  { url = "*.go", fg = "#78b8b0" },
+  { url = "*.md", fg = "#9aa4b8" },
+  { url = "*.json", fg = "#d4b878" },
+  { url = "*.toml", fg = "#d0a888" },
+  { url = "*.yaml", fg = "#d0909c" },
+  { url = "*.yml", fg = "#d0909c" },
+]
