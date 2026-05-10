@@ -1,3 +1,4 @@
+local headers = require("utils.headers")
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -12,27 +13,18 @@ return {
         pick = function(cmd, opts)
           return LazyVim.pick(cmd, opts)()
         end,
-        header = [[
-                                                                   
-      ████ ██████           █████      ██                 btw
-     ███████████             █████                            
-     █████████ ███████████████████ ███   ███████████  
-    █████████  ███    █████████████ █████ ██████████████  
-   █████████ ██████████ █████████ █████ █████ ████ █████  
- ███████████ ███    ███ █████████ █████ █████ ████ █████ 
-██████  █████████████████████ ████ █████ █████ ████ ██████
-]],
-                -- stylua: ignore
-                ---@type snacks.dashboard.Item[]
-                keys = {
-                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                    { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                    { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                    { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                    -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-                    -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                },
+        header = headers.bloody,
+        -- stylua: ignore
+        ---@type snacks.dashboard.Item[]
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        },
       },
     },
     picker = {
@@ -58,16 +50,17 @@ return {
             auto_hide = { "input" },
           },
         },
-        -- explorer = {
-        --   -- auto_close = true,
-        --   layout = {
-        --     -- preset = "default",
-        --     preset = "sidebar",
-        --     layout = { position = "right" },
-        --     preview = false,
-        --     auto_hide = { "input" },
+        --   explorer = {
+        --     replace_netrw = false,
+        --     -- auto_close = true,
+        --     layout = {
+        --       -- preset = "default",
+        --       preset = "sidebar",
+        --       layout = { position = "right" },
+        --       preview = false,
+        --       auto_hide = { "input" },
+        --     },
         --   },
-        -- },
       },
     },
   },
