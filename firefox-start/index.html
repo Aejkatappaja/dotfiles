@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>~/homepage</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230e1018'/><path d='M10 9 L18 16 L10 23' stroke='%2380c8e0' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/><rect x='20' y='22' width='6' height='2.5' rx='0.5' fill='%23d4b878'/></svg>" />
+
+<style>
+  /* === sora palette === */
+  :root {
+    --bg: #0e1018;
+    --bg-float: #0a0c12;
+    --bg-elev: #14161e;
+    --bg-cursor: #171a24;
+    --bg-sel: #1e2430;
+    --border: #222838;
+    --fg: #c8d0e0;
+    --fg-dim: #9aa4b8;
+    --fg-bright: #dce4f0;
+    --comment: #586478;
+    --cyan: #80c8e0;
+    --purple: #b0a0d8;
+    --sage: #90c8a0;
+    --rose: #d0909c;
+    --gold: #d4b878;
+    --peach: #d0a888;
+    --teal: #78b8b0;
+    --steel: #8898b8;
+
+    --mono:
+      "TX-02", "JetBrainsMono Nerd Font Mono", "JetBrains Mono", "SF Mono",
+      "Berkeley Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
+
+    --line: 1.55;
+    --r: 4px;
+    --t: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: var(--line);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* selection */
+  ::selection { background: var(--bg-sel); color: var(--fg-bright); }
+
+  /* grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  /* scanline overlay (very faint) */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 998;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgba(255, 255, 255, 0.012) 2px,
+      rgba(255, 255, 255, 0.012) 3px
+    );
+  }
+
+  /* ambient glow blobs */
+  .glow {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.18;
+  }
+  .glow-1 { top: -180px; left: -120px; width: 480px; height: 480px; background: var(--cyan); }
+  .glow-2 { bottom: -200px; right: -160px; width: 560px; height: 560px; background: var(--purple); opacity: 0.13; }
+  .glow-3 { top: 40%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 200px; background: var(--gold); opacity: 0.04; }
+
+  /* === layout === */
+  .shell {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 32px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-height: 100vh;
+  }
+
+  /* === top statusline === */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+    color: var(--comment);
+    padding: 4px 0 8px;
+    border-bottom: 1px dashed var(--border);
+    animation: fadeIn 360ms ease both;
+  }
+  .topbar .left { display: flex; gap: 16px; align-items: center; }
+  .topbar .left .tag {
+    background: var(--bg-elev);
+    color: var(--cyan);
+    padding: 2px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    text-transform: lowercase;
+    letter-spacing: 1px;
+  }
+  .topbar .right { display: flex; gap: 18px; }
+  .topbar .right span { color: var(--fg-dim); }
+  .topbar .right b { color: var(--sage); font-weight: 500; }
+  .topbar .blink::after {
+    content: "▍";
+    color: var(--cyan);
+    margin-left: 4px;
+    animation: blink 1.05s steps(1) infinite;
+  }
+
+  /* === wordmark + meta === */
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: end;
+    gap: 32px;
+    padding-top: 16px;
+  }
+  .wordmark {
+    font-size: 84px;
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0;
+    padding: 0 0 8px;
+    display: inline-block;
+    animation: fadeIn 500ms ease 80ms both;
+    text-shadow:
+      0 0 18px rgba(212, 184, 120, 0.35),
+      0 0 38px rgba(212, 184, 120, 0.12);
+  }
+  .wordmark .slash {
+    color: var(--cyan);
+    opacity: 0.85;
+    margin-left: 6px;
+    text-shadow:
+      0 0 18px rgba(128, 200, 224, 0.45),
+      0 0 38px rgba(128, 200, 224, 0.15);
+  }
+  .wordmark .accent { color: var(--gold); }
+  .meta {
+    text-align: right;
+    color: var(--comment);
+    font-size: 12px;
+    line-height: 1.7;
+    animation: fadeIn 500ms ease 160ms both;
+  }
+  .meta .k { color: var(--purple); }
+  .meta .v { color: var(--fg); }
+  .meta .c { color: var(--peach); }
+
+  /* === clock block === */
+  .clock-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 0 6px;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    animation: fadeIn 600ms ease 240ms both;
+  }
+  .clock {
+    font-size: clamp(72px, 12vw, 132px);
+    font-weight: 500;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    color: var(--fg-bright);
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+  .clock .h, .clock .m { color: var(--fg-bright); }
+  .clock .sep { color: var(--cyan); animation: blink 1s steps(1) infinite; }
+  .clock .s {
+    font-size: 0.42em;
+    color: var(--gold);
+    margin-left: 16px;
+    align-self: end;
+    padding-bottom: 0.3em;
+    letter-spacing: 0;
+    transition: opacity 200ms ease;
+  }
+  .greeting {
+    text-align: right;
+    line-height: 1.5;
+  }
+  .greeting .prompt {
+    color: var(--cyan);
+    margin-right: 8px;
+  }
+  .greeting .text {
+    color: var(--sage);
+    font-size: 18px;
+    letter-spacing: 0.2px;
+  }
+  .greeting .text .name {
+    color: var(--fg-bright);
+    font-weight: 500;
+  }
+  .greeting .date {
+    margin-top: 8px;
+    color: var(--comment);
+    font-size: 12.5px;
+  }
+  .greeting .date b { color: var(--steel); font-weight: 400; }
+
+  /* === search === */
+  .search-wrap {
+    position: relative;
+    animation: fadeIn 600ms ease 320ms both;
+  }
+  .search-corners {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: var(--cyan);
+    opacity: 0.45;
+    transition: opacity var(--t), color var(--t);
+  }
+  .search-corners span {
+    position: absolute;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .search-corners .tl { top: 6px; left: 8px; }
+  .search-corners .tr { top: 6px; right: 8px; }
+  .search-corners .bl { bottom: 6px; left: 8px; }
+  .search-corners .br { bottom: 6px; right: 8px; }
+  .search:focus-within .search-corners { opacity: 1; color: var(--cyan); }
+
+  .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 18px 22px;
+    transition: border-color var(--t), box-shadow var(--t), background var(--t);
+  }
+  .search:focus-within {
+    border-color: var(--cyan);
+    background: var(--bg-cursor);
+    box-shadow:
+      0 0 0 1px rgba(128, 200, 224, 0.18),
+      0 0 32px -10px rgba(128, 200, 224, 0.55);
+  }
+  .search .glyph {
+    color: var(--cyan);
+    font-size: 16px;
+    line-height: 1;
+  }
+  .search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--fg-bright);
+    font: inherit;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    caret-color: var(--cyan);
+  }
+  .search input::placeholder {
+    color: var(--comment);
+    font-style: italic;
+  }
+  .search .hint {
+    color: var(--comment);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: var(--bg-float);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 2px;
+    user-select: none;
+  }
+  .search .hint kbd {
+    color: var(--steel);
+    font-family: inherit;
+  }
+
+  /* === tiles === */
+  .tiles-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    color: var(--comment);
+    font-size: 11.5px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--border);
+    animation: fadeIn 600ms ease 400ms both;
+  }
+  .tiles-header b { color: var(--peach); font-weight: 500; }
+  .tiles-header span { color: var(--fg-dim); text-transform: none; letter-spacing: 0; }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .tile {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 16px 16px 14px;
+    color: var(--fg);
+    transition:
+      background var(--t),
+      border-color var(--t),
+      transform var(--t),
+      box-shadow var(--t);
+    overflow: hidden;
+    cursor: pointer;
+    animation: fadeIn 500ms ease both;
+  }
+  .tile:nth-child(1)  { animation-delay: 460ms; }
+  .tile:nth-child(2)  { animation-delay: 490ms; }
+  .tile:nth-child(3)  { animation-delay: 520ms; }
+  .tile:nth-child(4)  { animation-delay: 550ms; }
+  .tile:nth-child(5)  { animation-delay: 580ms; }
+  .tile:nth-child(6)  { animation-delay: 610ms; }
+  .tile:nth-child(7)  { animation-delay: 640ms; }
+  .tile:nth-child(8)  { animation-delay: 670ms; }
+  .tile:nth-child(9)  { animation-delay: 700ms; }
+  .tile:nth-child(10) { animation-delay: 730ms; }
+  .tile:nth-child(11) { animation-delay: 760ms; }
+  .tile:nth-child(12) { animation-delay: 790ms; }
+
+  .tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(128, 200, 224, 0.06));
+    opacity: 0;
+    transition: opacity var(--t);
+  }
+  .tile:hover,
+  .tile:focus-visible {
+    border-color: var(--cyan);
+    background: var(--bg-cursor);
+    transform: translateY(-2px);
+    outline: none;
+    box-shadow:
+      0 0 0 1px rgba(128, 200, 224, 0.12),
+      0 8px 28px -12px rgba(128, 200, 224, 0.4);
+  }
+  .tile:hover::before { opacity: 1; }
+  .tile:hover .idx { color: var(--gold); }
+  .tile:hover .arrow { transform: translate(2px, -2px); color: var(--cyan); }
+
+  .tile .row1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .tile .idx {
+    color: var(--purple);
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    transition: color var(--t);
+  }
+  .tile .arrow {
+    color: var(--comment);
+    font-size: 12px;
+    line-height: 1;
+    transition: transform var(--t), color var(--t);
+  }
+  .tile .name {
+    color: var(--fg-bright);
+    font-size: 15px;
+    letter-spacing: 0.1px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .tile .name .mn {
+    color: var(--cyan);
+    margin-right: 6px;
+    font-weight: 400;
+  }
+  .tile .url {
+    color: var(--comment);
+    font-size: 11.5px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tile:hover .url { color: var(--steel); }
+
+  /* === bottom statusline === */
+  .footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px dashed var(--border);
+    padding-top: 10px;
+    font-size: 11px;
+    color: var(--comment);
+    letter-spacing: 0.4px;
+    animation: fadeIn 600ms ease 820ms both;
+  }
+  .footer .left, .footer .right { display: flex; gap: 16px; }
+  .footer kbd {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--steel);
+    padding: 1px 6px;
+    border-radius: 2px;
+    font: inherit;
+    font-size: 10px;
+  }
+  .footer .ok { color: var(--sage); }
+  .footer .warn { color: var(--gold); }
+  .footer .bad { color: var(--rose); }
+
+  /* === ascii decoration === */
+  .ascii {
+    color: var(--border);
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: pre;
+    pointer-events: none;
+    user-select: none;
+    position: fixed;
+    bottom: 16px;
+    right: 24px;
+    text-align: right;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* press flash on tile when keyboard-jumping */
+  .tile.flash { animation: flash 320ms ease both; }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes flash {
+    0% { background: var(--cyan); border-color: var(--cyan); }
+    100% { background: var(--bg-cursor); border-color: var(--cyan); }
+  }
+
+  /* === responsive === */
+  @media (max-width: 900px) {
+    .tiles { grid-template-columns: repeat(2, 1fr); }
+    .header { grid-template-columns: 1fr; }
+    .meta { text-align: left; }
+    .clock-block { grid-template-columns: 1fr; }
+    .greeting { text-align: left; }
+  }
+  @media (max-width: 520px) {
+    .shell { padding: 16px 18px 96px; }
+    .clock { font-size: 64px; }
+    .topbar { font-size: 10.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<main class="shell">
+
+  <!-- top statusline -->
+  <header class="topbar">
+    <div class="left">
+      <span class="tag">sora</span>
+      <span>tty1</span>
+      <span class="blink" id="session">session @ <b id="user">user</b></span>
+    </div>
+    <div class="right">
+      <span>uptime <b id="uptime">0s</b></span>
+      <span>utc <b id="utc">--:--</b></span>
+      <span>● <b id="status">online</b></span>
+    </div>
+  </header>
+
+  <!-- wordmark + meta -->
+  <section class="header">
+    <div class="wordmark">~<span class="slash">/</span></div>
+    <div class="meta">
+      <div><span class="k">~</span><span class="c">/</span><span class="v">homepage</span> <span class="c">·</span> <span class="k">v</span><span class="v">1.0</span></div>
+      <div><span class="c">//</span> <span class="v">a small terminal in your browser</span></div>
+      <div><span class="c">//</span> <span class="v">press</span> <span class="k">/</span> <span class="v">to search</span> <span class="c">·</span> <span class="k">1-9</span> <span class="v">to jump</span></div>
+    </div>
+  </section>
+
+  <!-- clock + greeting -->
+  <section class="clock-block">
+    <div class="clock" aria-label="current time">
+      <span class="h" id="ch">--</span><span class="sep">:</span><span class="m" id="cm">--</span><span class="s" id="cs">--</span>
+    </div>
+    <div class="greeting">
+      <div><span class="prompt">❯</span><span class="text" id="hello">good morning, <span class="name">friend</span>.</span></div>
+      <div class="date" id="cdate"><b>—</b></div>
+    </div>
+  </section>
+
+  <!-- search -->
+  <section class="search-wrap">
+    <form class="search" id="searchForm" autocomplete="off" action="https://duckduckgo.com/" method="get" target="_blank" rel="noopener noreferrer">
+      <span class="glyph">❯</span>
+      <input
+        type="text"
+        name="q"
+        id="q"
+        placeholder="search the duck..."
+        autofocus
+        spellcheck="false"
+        autocorrect="off"
+        autocapitalize="off"
+      />
+      <span class="hint"><kbd>/</kbd> focus</span>
+      <span class="search-corners" aria-hidden="true">
+        <span class="tl">┌</span><span class="tr">┐</span>
+        <span class="bl">└</span><span class="br">┘</span>
+      </span>
+    </form>
+  </section>
+
+  <!-- tiles header -->
+  <div class="tiles-header">
+    <span><b>quick.access</b> · 12 endpoints</span>
+    <span>type number 1-9 / 0 / - / = to launch</span>
+  </div>
+
+  <!-- tiles -->
+  <nav class="tiles" id="tiles">
+    <!-- row 1: daily -->
+    <a class="tile" data-key="1" href="https://github.com/Aejkatappaja" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[01]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">gh</span>github</div>
+      <div class="url">github.com</div>
+    </a>
+    <a class="tile" data-key="2" href="https://mail.google.com/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[02]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">ml</span>gmail</div>
+      <div class="url">mail.google.com</div>
+    </a>
+    <a class="tile" data-key="3" href="https://www.youtube.com/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[03]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">yt</span>youtube</div>
+      <div class="url">youtube.com</div>
+    </a>
+    <a class="tile" data-key="4" href="https://www.notion.so/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[04]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">no</span>notion</div>
+      <div class="url">notion.so</div>
+    </a>
+    <!-- row 2: social -->
+    <a class="tile" data-key="5" href="https://www.reddit.com/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[05]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">rd</span>reddit</div>
+      <div class="url">reddit.com</div>
+    </a>
+    <a class="tile" data-key="6" href="https://x.com/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[06]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">tw</span>x / twitter</div>
+      <div class="url">x.com</div>
+    </a>
+    <a class="tile" data-key="7" href="https://www.linkedin.com/feed/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[07]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">in</span>linkedin</div>
+      <div class="url">linkedin.com</div>
+    </a>
+    <a class="tile" data-key="8" href="https://discord.com/channels/@me" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[08]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">dc</span>discord</div>
+      <div class="url">discord.com</div>
+    </a>
+    <!-- row 3: dev / extras -->
+    <a class="tile" data-key="9" href="https://dev.to/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[09]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">dv</span>dev.to</div>
+      <div class="url">dev.to</div>
+    </a>
+    <a class="tile" data-key="0" href="https://app.slack.com/client" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[10]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">sl</span>slack</div>
+      <div class="url">app.slack.com</div>
+    </a>
+    <a class="tile" data-key="-" href="https://claude.ai/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[11]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">cd</span>claude</div>
+      <div class="url">claude.ai</div>
+    </a>
+    <a class="tile" data-key="=" href="https://open.spotify.com/" tabindex="0" target="_blank" rel="noopener noreferrer">
+      <div class="row1"><span class="idx">[12]</span><span class="arrow">↗</span></div>
+      <div class="name"><span class="mn">sp</span>spotify</div>
+      <div class="url">open.spotify.com</div>
+    </a>
+  </nav>
+
+  <!-- bottom statusline -->
+  <footer class="footer">
+    <div class="left">
+      <span class="ok">● ready</span>
+      <span>shell <b>zsh</b></span>
+      <span>theme <b style="color:var(--gold)">sora</b></span>
+    </div>
+    <div class="right">
+      <span><kbd>/</kbd> search</span>
+      <span><kbd>1-9</kbd> jump</span>
+      <span><kbd>esc</kbd> blur</span>
+    </div>
+  </footer>
+</main>
+
+<pre class="ascii" aria-hidden="true">         _
+        ( )
+   ┐ ┌──┴──┐
+   ┘ │ ▮ ▮ │
+     │  ‾  │
+     └─────┘
+   stay curious</pre>
+
+<script>
+  // === user / session ===
+  const USER = "anton";
+  document.getElementById("user").textContent = USER;
+
+  // === clock ===
+  const ch = document.getElementById("ch");
+  const cm = document.getElementById("cm");
+  const cs = document.getElementById("cs");
+  const cdate = document.getElementById("cdate");
+  const utc = document.getElementById("utc");
+  const hello = document.getElementById("hello");
+  const uptimeEl = document.getElementById("uptime");
+
+  const pad = (n) => String(n).padStart(2, "0");
+  const startedAt = Date.now();
+
+  const greet = (h) => {
+    if (h < 5)  return "still up,";
+    if (h < 12) return "good morning,";
+    if (h < 18) return "good afternoon,";
+    if (h < 22) return "good evening,";
+    return "good night,";
+  };
+
+  const fmtDate = (d) => {
+    const wd = ["sun","mon","tue","wed","thu","fri","sat"][d.getDay()];
+    const mo = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"][d.getMonth()];
+    return `${wd} · ${pad(d.getDate())} ${mo} ${d.getFullYear()} · w${weekNum(d)}`;
+  };
+
+  function weekNum(d) {
+    const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const day = t.getUTCDay() || 7;
+    t.setUTCDate(t.getUTCDate() + 4 - day);
+    const ys = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+    return pad(Math.ceil(((t - ys) / 86400000 + 1) / 7));
+  }
+
+  function fmtUptime(ms) {
+    const s = Math.floor(ms / 1000);
+    if (s < 60) return s + "s";
+    const m = Math.floor(s / 60);
+    if (m < 60) return m + "m " + (s % 60) + "s";
+    const h = Math.floor(m / 60);
+    return h + "h " + (m % 60) + "m";
+  }
+
+  function tick() {
+    const d = new Date();
+    ch.textContent = pad(d.getHours());
+    cm.textContent = pad(d.getMinutes());
+    cs.textContent = pad(d.getSeconds());
+    cs.style.opacity = "1";
+    setTimeout(() => { cs.style.opacity = "0.6"; }, 120);
+
+    cdate.innerHTML = `<b>${fmtDate(d)}</b>`;
+
+    const u = new Date();
+    utc.textContent = pad(u.getUTCHours()) + ":" + pad(u.getUTCMinutes());
+
+    hello.innerHTML = `${greet(d.getHours())} <span class="name">${USER}</span>.`;
+
+    uptimeEl.textContent = fmtUptime(Date.now() - startedAt);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // === keyboard ===
+  const q = document.getElementById("q");
+  const tiles = document.querySelectorAll(".tile");
+
+  document.addEventListener("keydown", (e) => {
+    const focused = document.activeElement;
+    const isTyping = focused === q || focused.tagName === "INPUT" || focused.tagName === "TEXTAREA";
+
+    if (e.key === "Escape") {
+      if (q.value) q.value = "";
+      q.blur();
+      return;
+    }
+
+    if (isTyping) return;
+
+    if (e.key === "/") {
+      e.preventDefault();
+      q.focus();
+      q.select();
+      return;
+    }
+
+    // jump keys
+    const t = document.querySelector(`.tile[data-key="${e.key}"]`);
+    if (t) {
+      t.classList.add("flash");
+      setTimeout(() => {
+        window.open(t.href, "_blank", "noopener,noreferrer");
+        t.classList.remove("flash");
+      }, 140);
+    }
+  });
+
+  // session blink stops once focused
+  q.addEventListener("focus", () => {
+    document.getElementById("session").classList.remove("blink");
+  });
+  q.addEventListener("blur", () => {
+    document.getElementById("session").classList.add("blink");
+  });
+</script>
+
+</body>
+</html>
