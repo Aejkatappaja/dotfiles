@@ -1,0 +1,5 @@
+require("items.widgets.volume")
+require("items.widgets.wifi")
+require("items.widgets.ram")
+require("items.widgets.cpu")
+require("items.widgets.music")
