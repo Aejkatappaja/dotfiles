@@ -12,7 +12,6 @@ marker_copied = { fg = "#90c8a0", bg = "#90c8a0" }
 marker_cut = { fg = "#c46c78", bg = "#c46c78" }
 tab_active = { fg = "#c8d0e0", bg = "#14161e" }
 tab_inactive = { fg = "#586478", bg = "#0a0c12" }
-tab_width = 1
 border_symbol = "│"
 border_style = { fg = "#222838" }
 
