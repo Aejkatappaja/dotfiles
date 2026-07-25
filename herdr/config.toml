@@ -1,0 +1,26 @@
+onboarding = false
+# Sora theme for herdr (https://herdr.dev).
+# Install: copy into ~/.config/herdr/config.toml, or merge the [theme] and
+# [theme.custom] blocks below into your existing config.
+
+[theme]
+name = "terminal"   # neutral base; every palette token is overridden below by Sora
+auto_switch = false
+
+[theme.custom]
+accent      = "#80c8e0"
+panel_bg    = "#0e1018"
+surface0    = "#14161e"
+surface1    = "#171a24"
+surface_dim = "#0a0c12"
+overlay0    = "#586478"
+overlay1    = "#8898b8"
+text        = "#c8d0e0"
+subtext0    = "#9aa4b8"
+mauve       = "#b0a0d8"
+green       = "#90c8a0"
+yellow      = "#d4b878"
+red         = "#d0909c"
+blue        = "#6898b8"
+teal        = "#78b8b0"
+peach       = "#d0a888"
