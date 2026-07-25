@@ -1,15 +1,19 @@
 theme = sora
 
-font-family                    = TX-02
-# font-family                    = JetBrainsMono Nerd Font Mono
+# font-family                    = TX-02
+# font-family                    = DepartureMono Nerd Font Mono
+font-family                    = JetBrainsMono Nerd Font Mono
 
-
-
-# background-image               = /Users/anton/.config/wallpapers/tn-glados-better.jpg
+# background-image               = /Users/anton/.config/wallpapers/mima.png
+# background-image               = /Users/anton/.config/wallpapers/ghostty_planet.png
+# background-image               = /Users/anton/.config/wallpapers/sunken-tower.png
+#
 #
 # background-image-fit           = cover
 # background-image-opacity       = 0.06
-font-size                      = 20
+# font-size                      = 20
+font-size                      = 18
+
 font-thicken                   = true
 font-synthetic-style           = false
 font-style-bold                = false
