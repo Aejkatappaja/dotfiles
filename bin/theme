@@ -1,0 +1,216 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Switch sora <-> gruvbox-material across sketchybar, tmux, nvim, ghostty.
+# Usage: theme [gruvbox|sora]   (no arg = toggle)
+
+CFG="$HOME/.config"
+SB="$CFG/sketchybar/colors.lua"
+TMUX_CONF="$CFG/tmux/tmux.conf"
+NVIM_CS="$CFG/nvim/lua/plugins/colorscheme.lua"
+GHOSTTY="$CFG/ghostty/config"
+BORDERS="$CFG/borders/bordersrc"
+HLCHUNK="$CFG/nvim/lua/plugins/hlchunk.lua"
+BAT="$CFG/bat/config"
+BTOP="$CFG/btop/btop.conf"
+YAZI_THEME="$CFG/yazi/theme.toml"
+HUNK="$CFG/hunk/config.toml"
+LAZYGIT="$CFG/lazygit/config.yml"
+OBSIDIAN="$HOME/anton_lab/.obsidian/appearance.json"
+OPENCODE_TUI="$CFG/opencode/tui.json"
+GITCONFIG="$HOME/.gitconfig"
+
+warn() { printf '\033[33m⚠ %s\033[0m\n' "$*" >&2; }
+
+# hlchunk style is a commented/active pair per theme; toggle by color.
+hl_activate() { sed -i '' -E "s@^([[:space:]]*)-- *(\{ fg = \"$1\" \},?)@\1\2@" "$2"; }
+hl_comment() {
+  sed -i '' -E "s@^([[:space:]]*)-- *(\{ fg = \"$1\" \},?)@\1\2@" "$2"
+  sed -i '' -E "s@^([[:space:]]*)(\{ fg = \"$1\" \},?)@\1-- \2@" "$2"
+}
+
+# anchor <regex> <file> <label> : 0 if editable, else warn + non-zero (skip sed)
+anchor() {
+  if [[ ! -f "$2" ]]; then
+    warn "$3: fichier absent ($2)"
+    return 1
+  fi
+  if ! grep -qE "$1" "$2"; then
+    warn "$3: anchor introuvable dans $2 — non appliqué"
+    return 1
+  fi
+  return 0
+}
+
+# Detect current from sketchybar palette selector
+current="sora"
+if grep -qE 'local theme = "gruvbox"' "$SB"; then current="gruvbox"; fi
+
+target="${1:-}"
+if [[ -z "$target" ]]; then
+  [[ "$current" == "gruvbox" ]] && target="sora" || target="gruvbox"
+fi
+
+case "$target" in
+gruvbox | sora) ;;
+*)
+  echo "usage: theme [gruvbox|sora]"
+  exit 1
+  ;;
+esac
+
+# Per-theme values
+if [[ "$target" == "gruvbox" ]]; then
+  TMUX_THEME="gruvbox"
+  TMUX_MODE="fg=#282828,bg=#d4be98"
+  NVIM_CS_NAME="gruvbox-material"
+  GHOSTTY_THEME="gruvbox-material"
+  BORDER_COLOR="0xFFD4BE98"
+  HL_ON="#F9B34C"
+  HL_OFF="#80C8E0"
+  WALLPAPER="$CFG/wallpapers/stellar_gruvbox.png"
+  PALETTE="gruvbox-material"
+  OBS_THEME="Material Gruvbox"
+else
+  TMUX_THEME="sora"
+  TMUX_MODE="fg=#c8d0e0,bg=#1e2430"
+  NVIM_CS_NAME="sora"
+  GHOSTTY_THEME="sora"
+  BORDER_COLOR="0xFF80C8E0"
+  HL_ON="#80C8E0"
+  HL_OFF="#F9B34C"
+  WALLPAPER="$CFG/wallpapers/stellar_sora.png"
+  PALETTE="sora"
+  OBS_THEME="Sora"
+fi
+
+# --- sketchybar ---
+if anchor 'local theme = "(sora|gruvbox)"' "$SB" 'sketchybar'; then
+  sed -i '' -E "s/local theme = \"(sora|gruvbox)\"/local theme = \"$target\"/" "$SB"
+  if command -v sketchybar >/dev/null 2>&1; then
+    sketchybar --reload >/dev/null 2>&1 || true
+  fi
+fi
+
+# --- tmux ---
+if anchor '@tokyo-night-tmux_theme "[a-z]+"' "$TMUX_CONF" 'tmux theme'; then
+  sed -i '' -E "s/@tokyo-night-tmux_theme \"[a-z]+\"/@tokyo-night-tmux_theme \"$TMUX_THEME\"/" "$TMUX_CONF"
+fi
+if anchor 'set -g mode-style "[^"]*"' "$TMUX_CONF" 'tmux mode-style'; then
+  sed -i '' -E "s|set -g mode-style \"[^\"]*\"|set -g mode-style \"$TMUX_MODE\"|" "$TMUX_CONF"
+fi
+if tmux info >/dev/null 2>&1; then
+  tmux source-file "$TMUX_CONF" >/dev/null 2>&1 || true
+fi
+
+# --- nvim ---
+if anchor 'colorscheme = "(gruvbox-material|sora)"' "$NVIM_CS" 'nvim'; then
+  sed -i '' -E "s/colorscheme = \"(gruvbox-material|sora)\"/colorscheme = \"$NVIM_CS_NAME\"/" "$NVIM_CS"
+fi
+# live-switch every running nvim (mode-safe, no keystrokes)
+while IFS= read -r sock; do
+  [[ -S "$sock" ]] || continue
+  nvim --server "$sock" --remote-expr "execute('colorscheme $NVIM_CS_NAME')" >/dev/null 2>&1 || true
+done < <(find "${TMPDIR:-/tmp}" -maxdepth 3 -name 'nvim.*.0' 2>/dev/null)
+
+# --- nvim hlchunk (persisted; recolors on next nvim launch) ---
+if anchor 'fg = "(#F9B34C|#80C8E0)"' "$HLCHUNK" 'hlchunk'; then
+  hl_activate "$HL_ON" "$HLCHUNK"
+  hl_comment "$HL_OFF" "$HLCHUNK"
+fi
+
+# --- bat (next invocation picks it up) ---
+if anchor '^--theme=' "$BAT" 'bat'; then
+  sed -i '' -E "s|^--theme=\".*\"|--theme=\"$PALETTE\"|" "$BAT"
+fi
+
+# --- btop (applies on next launch) ---
+if anchor '^color_theme = ' "$BTOP" 'btop'; then
+  sed -i '' -E "s|^color_theme = \".*\"|color_theme = \"$CFG/btop/themes/$PALETTE.theme\"|" "$BTOP"
+fi
+
+# --- yazi / hunk / lazygit: swap the whole theme file (applies on next launch) ---
+swap_theme() { # src dest label
+  if [[ -f "$1" ]]; then
+    cp "$1" "$2"
+  else
+    warn "$3: variante absente ($1)"
+  fi
+}
+swap_theme "$CFG/yazi/themes/$PALETTE.toml" "$YAZI_THEME" 'yazi'
+swap_theme "$CFG/hunk/$PALETTE.toml" "$HUNK" 'hunk'
+swap_theme "$CFG/lazygit/$PALETTE.yml" "$LAZYGIT" 'lazygit'
+
+# --- obsidian (applies on restart/refocus) ---
+if anchor '"cssTheme":' "$OBSIDIAN" 'obsidian'; then
+  sed -i '' -E "s|\"cssTheme\": \"[^\"]*\"|\"cssTheme\": \"$OBS_THEME\"|" "$OBSIDIAN"
+fi
+
+# --- opencode (applies on next launch) ---
+if anchor '"theme":' "$OPENCODE_TUI" 'opencode'; then
+  sed -i '' -E "s|\"theme\": \"[^\"]*\"|\"theme\": \"$PALETTE\"|" "$OPENCODE_TUI"
+fi
+
+# --- git-delta: swap the included palette gitconfig (next diff) ---
+if anchor 'path = .*/git/.*\.gitconfig' "$GITCONFIG" 'git-delta'; then
+  sed -i '' -E "s|^([[:space:]]*path = ).*/git/.*\.gitconfig|\1~/.config/git/$PALETTE.gitconfig|" "$GITCONFIG"
+fi
+
+# --- ghostty ---
+# each theme file embeds its own background, so we only swap the theme line.
+if anchor '^theme = ' "$GHOSTTY" 'ghostty theme'; then
+  sed -i '' -E "s|^theme = .*|theme = $GHOSTTY_THEME|" "$GHOSTTY"
+fi
+# reload the running (frontmost) ghostty via its reload_config keybind (super+shift+,)
+# needs Accessibility perm for Ghostty; falls back to manual cmd+shift+, if denied
+if ! osascript -e 'tell application "System Events" to key code 43 using {command down, shift down}' >/dev/null 2>&1; then
+  echo "  ghostty: reload manually with cmd+shift+, (grant Accessibility to Ghostty to automate)"
+fi
+
+# --- jankyborders ---
+if anchor '^[[:space:]]*active_color=' "$BORDERS" 'borders'; then
+  sed -i '' -E "s|^([[:space:]]*)active_color=.*|\1active_color=$BORDER_COLOR|" "$BORDERS"
+fi
+if command -v borders >/dev/null 2>&1; then
+  borders active_color="$BORDER_COLOR" >/dev/null 2>&1 || true
+fi
+
+# --- wallpaper (swap the file the all-spaces desktop points at; keep the mode) ---
+# One-time setup: in System Settings set CURRENT_WP as the desktop picture with
+# "apply to all Spaces" on. After that this just swaps its bytes and reloads,
+# so the all-Spaces mode is never broken (no System Events involved).
+CURRENT_WP="$CFG/wallpapers/current-theme.jpg"
+if [[ -f "$WALLPAPER" ]]; then
+  if cp "$WALLPAPER" "$CURRENT_WP" 2>/dev/null; then
+    killall WallpaperAgent 2>/dev/null || true
+  else
+    warn "wallpaper: copie échouée vers $CURRENT_WP"
+  fi
+else
+  warn "wallpaper: fichier absent ($WALLPAPER)"
+fi
+
+# --- report ---
+if command -v gum >/dev/null 2>&1; then
+  gum style --foreground 10 --border rounded --border-foreground 10 \
+    --align left --padding "0 2" --margin "1 0" \
+    "theme -> $target" \
+    "sketchybar  reloaded" \
+    "tmux        reloaded" \
+    "nvim        live + persisted" \
+    "hlchunk     persisted (restart nvim)" \
+    "bat         set" \
+    "btop        set (next launch)" \
+    "yazi        set (next launch)" \
+    "hunk        set" \
+    "lazygit     set (next launch)" \
+    "obsidian    set (restart)" \
+    "opencode    set (next launch)" \
+    "delta       set" \
+    "borders     reloaded" \
+    "wallpaper   set" \
+    "ghostty     reloaded (cmd+shift+,)"
+else
+  echo "theme -> $target"
+  echo "ghostty: reload with cmd+shift+,"
+fi
