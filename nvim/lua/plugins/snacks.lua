@@ -13,7 +13,7 @@ return {
         pick = function(cmd, opts)
           return LazyVim.pick(cmd, opts)()
         end,
-        header = headers.bloody,
+        header = headers.nvim,
         -- stylua: ignore
         ---@type snacks.dashboard.Item[]
         keys = {

@@ -11,19 +11,6 @@ local bg_highlight = "#143652"
 
 return {
   {
-    "catppuccin/nvim",
-    lazy = true,
-    name = "catppuccin",
-    opts = {
-      flavour = "mocha",
-      transparent_background = true,
-      float = {
-        transparent = true, -- enable transparent floating windows
-      },
-      no_italic = true,
-    },
-  },
-  {
     "folke/tokyonight.nvim",
     priority = 1000,
     lazy = false,
@@ -51,6 +38,7 @@ return {
 
       local cmds = {
         "let g:gruvbox_material_background = 'hard'",
+        "let g:gruvbox_material_foreground = 'original'",
         "let g:gruvbox_material_transparent_background = 2",
         "let g:gruvbox_material_diagnostic_line_highlight = 1",
         "let g:gruvbox_material_diagnostic_virtual_text = 'colored'",
@@ -61,46 +49,54 @@ return {
       for _, cmd in ipairs(cmds) do
         vim.cmd(cmd)
       end
-    end,
-  },
-  {
-    "vague2k/vague.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("vague").setup({
-        -- optional configuration here
-        transparent = true,
-        style = {
-          -- "none" is the same thing as default. But "italic" and "bold" are also valid options
-          boolean = "none",
-          number = "none",
-          float = "none",
-          error = "none",
-          comments = "none",
-          conditionals = "none",
-          functions = "none",
-          headings = "bold",
-          operators = "none",
-          strings = "none",
-          variables = "none",
 
-          -- keywords
-          keywords = "none",
-          keyword_return = "none",
-          keywords_loop = "none",
-          keywords_label = "none",
-          keywords_exception = "none",
+      -- Kill leftover beige bg blocks on plugin float/title groups (bg only, keep fg)
+      local function clear_bg(group)
+        local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+        if not ok then
+          return
+        end
+        hl.bg = nil
+        hl.ctermbg = nil
+        vim.api.nvim_set_hl(0, group, hl)
+      end
 
-          -- builtin
-          builtin_constants = "none",
-          builtin_functions = "none",
-          builtin_types = "none",
-          builtin_variables = "none",
-        },
-        colors = {
-          floatBorder = "#252530",
-        },
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "gruvbox-material",
+        callback = function()
+          -- NormalFloat/FloatBorder are owned by init.lua (dark #1E2021), left alone here
+          local groups = {
+            "FloatTitle",
+            "SnacksPicker",
+            "SnacksPickerBorder",
+            "SnacksPickerTitle",
+            "SnacksPickerBoxTitle",
+            "SnacksPickerInput",
+            "SnacksPickerInputTitle",
+            "SnacksPickerList",
+            "SnacksPickerPreview",
+            "WhichKey",
+            "WhichKeyNormal",
+            "WhichKeyBorder",
+            "WhichKeyTitle",
+            "WhichKeyValue",
+          }
+          for _, g in ipairs(groups) do
+            clear_bg(g)
+          end
+
+          -- dashboard: shortcut keys red, labels/icons cream (like the reference config)
+          vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#ea6962" })
+          vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#d4be98" })
+          vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#d4be98" })
+
+          -- blink.cmp: opaque dark menu (no bleed-through), subtle selection instead of beige
+          vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#1e2021" })
+          vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#504945", bg = "#1e2021" })
+          vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#1e2021" })
+          vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#504945", bg = "#1e2021" })
+          vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#45403d" })
+        end,
       })
     end,
   },
@@ -126,60 +122,10 @@ return {
     end,
   },
   {
-    "Shatur/neovim-ayu",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("ayu").setup({
-        mirage = false,
-        terminal = true,
-        overrides = {
-          Normal = { bg = "NONE" },
-          NormalFloat = { bg = "NONE" },
-          NormalNC = { bg = "NONE" },
-          FloatBorder = { bg = "NONE" },
-          FloatTitle = { bg = "NONE" },
-          StatusLine = { bg = "NONE" },
-          StatusLineNC = { bg = "NONE" },
-          TabLineFill = { bg = "NONE" },
-          SignColumn = { bg = "NONE" },
-          WinBar = { bg = "NONE" },
-          WinBarNC = { bg = "NONE" },
-        },
-      })
-    end,
-  },
-  {
-    "wtfox/jellybeans.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      -- transparent = true,
-      flat_ui = false,
-      on_highlights = function(hl, c)
-        hl.NormalFloat = { fg = c.foreground, bg = "NONE" }
-        hl.FloatBorder = { fg = c.grey_one, bg = "NONE" }
-        hl.FloatTitle = { fg = c.biloba_flower, bg = "NONE", bold = true }
-        hl.StatusLine = { fg = c.foreground, bg = "NONE" }
-        hl.StatusLineNC = { fg = c.silver, bg = "NONE" }
-        hl.TabLineFill = { bg = "NONE" }
-      end,
-    },
-  },
-  {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      local theme = require("lualine.themes.jellybeans-nvim")
-      for _, mode in pairs(theme) do
-        if mode.b then
-          mode.b.bg = "NONE"
-        end
-        if mode.c then
-          mode.c.bg = "NONE"
-        end
-      end
       opts.options = opts.options or {}
-      opts.options.theme = theme
+      opts.options.theme = "auto"
     end,
   },
   {
