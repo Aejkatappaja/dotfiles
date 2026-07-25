@@ -1,0 +1,62 @@
+
+# Sora theme for btop
+# https://github.com/aejkatappaja/sora.nvim
+
+# Main background and text
+theme[main_bg]="#171717"
+theme[main_fg]="#d4be98"
+theme[title]="#d4be98"
+theme[hi_fg]="#7daea3"
+theme[selected_bg]="#282828"
+theme[selected_fg]="#ddc7a1"
+theme[inactive_fg]="#7c6f64"
+
+# Graph colors
+theme[proc_misc]="#7daea3"
+theme[cpu_box]="#7daea3"
+theme[mem_box]="#d3869b"
+theme[net_box]="#a9b665"
+theme[proc_box]="#e78a4e"
+theme[div_line]="#32302f"
+
+# Temperature
+theme[temp_start]="#a9b665"
+theme[temp_mid]="#d8a657"
+theme[temp_end]="#ea6962"
+
+# CPU
+theme[cpu_start]="#7daea3"
+theme[cpu_mid]="#d3869b"
+theme[cpu_end]="#d3869b"
+
+# Free/cached/available memory
+theme[free_start]="#a9b665"
+theme[free_mid]="#89b482"
+theme[free_end]="#a9b665"
+
+theme[cached_start]="#d3869b"
+theme[cached_mid]="#d3869b"
+theme[cached_end]="#d3869b"
+
+theme[available_start]="#d8a657"
+theme[available_mid]="#e78a4e"
+theme[available_end]="#d8a657"
+
+# Used memory
+theme[used_start]="#7daea3"
+theme[used_mid]="#d3869b"
+theme[used_end]="#d3869b"
+
+# Download/Upload
+theme[download_start]="#7daea3"
+theme[download_mid]="#89b482"
+theme[download_end]="#7daea3"
+
+theme[upload_start]="#d3869b"
+theme[upload_mid]="#d3869b"
+theme[upload_end]="#d3869b"
+
+# Process
+theme[process_start]="#7daea3"
+theme[process_mid]="#89b482"
+theme[process_end]="#a9b665"
