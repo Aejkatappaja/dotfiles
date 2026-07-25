@@ -1,0 +1,82 @@
+# Sora theme for Yazi
+# https://github.com/aejkatappaja/sora.nvim
+
+[manager]
+cwd = { fg = "#80c8e0" }
+hovered = { bg = "#1e2430" }
+preview_hovered = { bg = "#14161e" }
+find_keyword = { fg = "#d4b878", bold = true }
+find_position = { fg = "#80c8e0", italic = true }
+marker_selected = { fg = "#80c8e0", bg = "#80c8e0" }
+marker_copied = { fg = "#90c8a0", bg = "#90c8a0" }
+marker_cut = { fg = "#c46c78", bg = "#c46c78" }
+tab_active = { fg = "#c8d0e0", bg = "#14161e" }
+tab_inactive = { fg = "#586478", bg = "#0a0c12" }
+border_symbol = "│"
+border_style = { fg = "#222838" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#14161e", bg = "#14161e" }
+mode_normal = { fg = "#0e1018", bg = "#80c8e0", bold = true }
+mode_select = { fg = "#0e1018", bg = "#b0a0d8", bold = true }
+mode_unset = { fg = "#0e1018", bg = "#d0909c", bold = true }
+progress_label = { fg = "#c8d0e0" }
+progress_normal = { fg = "#222838" }
+progress_error = { fg = "#c46c78" }
+
+[input]
+border = { fg = "#80c8e0" }
+title = {}
+value = {}
+selected = { reversed = true }
+
+[select]
+border = { fg = "#80c8e0" }
+active = { fg = "#80c8e0" }
+inactive = {}
+
+[tasks]
+border = { fg = "#80c8e0" }
+title = {}
+hovered = { underline = true }
+
+[which]
+mask = { bg = "#0a0c12" }
+cand = { fg = "#80c8e0" }
+rest = { fg = "#586478" }
+desc = { fg = "#9aa4b8" }
+separator = "  "
+separator_style = { fg = "#222838" }
+
+[help]
+on = { fg = "#80c8e0" }
+exec = { fg = "#9aa4b8" }
+desc = { fg = "#586478" }
+hovered = { bg = "#1e2430", bold = true }
+footer = { fg = "#586478", bg = "#0a0c12" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#d0a888" },
+  { mime = "video/*", fg = "#d4b878" },
+  { mime = "audio/*", fg = "#d4b878" },
+  { mime = "application/zip", fg = "#b0a0d8" },
+  { mime = "application/gzip", fg = "#b0a0d8" },
+  { mime = "application/x-tar", fg = "#b0a0d8" },
+  { mime = "application/x-bzip2", fg = "#b0a0d8" },
+  { mime = "application/x-7z-compressed", fg = "#b0a0d8" },
+  { mime = "application/x-rar", fg = "#b0a0d8" },
+  { url = "*.rs", fg = "#d0a888" },
+  { url = "*.lua", fg = "#80c8e0" },
+  { url = "*.ts", fg = "#80c8e0" },
+  { url = "*.js", fg = "#d4b878" },
+  { url = "*.py", fg = "#90c8a0" },
+  { url = "*.go", fg = "#78b8b0" },
+  { url = "*.md", fg = "#9aa4b8" },
+  { url = "*.json", fg = "#d4b878" },
+  { url = "*.toml", fg = "#d0a888" },
+  { url = "*.yaml", fg = "#d0909c" },
+  { url = "*.yml", fg = "#d0909c" },
+]
