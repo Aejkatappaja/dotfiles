@@ -1,0 +1,61 @@
+# Gruvbox Material theme for Hunk (matches nvim palette) (https://github.com/modem-dev/hunk).
+# Install: copy into ~/.config/hunk/config.toml, or if you already keep a
+# config, merge the [custom_theme] block below and set `theme = "custom"`.
+
+theme = "custom"
+
+[custom_theme]
+base  = "github-dark-default"  # unset keys inherit from this built-in theme
+label = "Gruvbox Material"
+
+background = "#171717"
+panel      = "#141414"
+panelAlt   = "#1d2021"
+border     = "#32302f"
+accent     = "#7daea3"
+accentMuted = "#928374"
+text       = "#d4be98"
+muted      = "#928374"
+
+addedBg          = "#1b2311"
+removedBg        = "#2b1d1d"
+movedAddedBg     = "#1b2311"
+movedRemovedBg   = "#32302f"
+contextBg        = "#171717"
+addedContentBg   = "#333e1e"
+removedContentBg = "#3c1f1e"
+contextContentBg = "#171717"
+addedSignColor   = "#a9b665"
+removedSignColor = "#ea6962"
+
+lineNumberBg = "#141414"
+lineNumberFg = "#7c6f64"
+selectedHunk = "#282828"
+
+badgeAdded   = "#a9b665"
+badgeRemoved = "#ea6962"
+badgeNeutral = "#928374"
+
+fileNew       = "#a9b665"
+fileDeleted   = "#ea6962"
+fileRenamed   = "#7daea3"
+fileModified  = "#7c6f64"
+fileUntracked = "#89b482"
+
+noteBorder          = "#d3869b"
+noteBackground      = "#1d2021"
+noteTitleBackground = "#282828"
+noteTitleText       = "#ddc7a1"
+
+[custom_theme.syntax]
+default     = "#d4be98"
+keyword     = "#d3869b"
+string      = "#a9b665"
+comment     = "#7c6f64"
+number      = "#d8a657"
+function    = "#7daea3"
+property    = "#928374"
+type        = "#e78a4e"
+variable    = "#a89984"
+operator    = "#928374"
+punctuation = "#928374"

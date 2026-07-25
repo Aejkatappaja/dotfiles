@@ -1,0 +1,61 @@
+# Sora theme for Hunk (https://github.com/modem-dev/hunk).
+# Install: copy into ~/.config/hunk/config.toml, or if you already keep a
+# config, merge the [custom_theme] block below and set `theme = "custom"`.
+
+theme = "custom"
+
+[custom_theme]
+base  = "github-dark-default"  # unset keys inherit from this built-in theme
+label = "Sora"
+
+background = "#0e1018"
+panel      = "#0a0c12"
+panelAlt   = "#14161e"
+border     = "#222838"
+accent     = "#80c8e0"
+accentMuted = "#8898b8"
+text       = "#c8d0e0"
+muted      = "#9aa4b8"
+
+addedBg          = "#0e1c16"
+removedBg        = "#1c1014"
+movedAddedBg     = "#0d1f22"
+movedRemovedBg   = "#171426"
+contextBg        = "#0e1018"
+addedContentBg   = "#163524"
+removedContentBg = "#35161c"
+contextContentBg = "#0e1018"
+addedSignColor   = "#68b080"
+removedSignColor = "#b86068"
+
+lineNumberBg = "#0a0c12"
+lineNumberFg = "#6a7890"
+selectedHunk = "#1e2430"
+
+badgeAdded   = "#68b080"
+badgeRemoved = "#b86068"
+badgeNeutral = "#8898b8"
+
+fileNew       = "#68b080"
+fileDeleted   = "#b86068"
+fileRenamed   = "#80c8e0"
+fileModified  = "#6898b8"
+fileUntracked = "#78b8b0"
+
+noteBorder          = "#b0a0d8"
+noteBackground      = "#14161e"
+noteTitleBackground = "#1e2430"
+noteTitleText       = "#dce4f0"
+
+[custom_theme.syntax]
+default     = "#c8d0e0"
+keyword     = "#b0a0d8"
+string      = "#90c8a0"
+comment     = "#586478"
+number      = "#d4b878"
+function    = "#80c8e0"
+property    = "#8898b8"
+type        = "#d0a888"
+variable    = "#b4bcd0"
+operator    = "#8898b8"
+punctuation = "#9aa4b8"
