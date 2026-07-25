@@ -1,0 +1,82 @@
+# Gruvbox Material theme for Yazi (matches nvim palette)
+# https://github.com/aejkatappaja/sora.nvim
+
+[manager]
+cwd = { fg = "#7daea3" }
+hovered = { bg = "#282828" }
+preview_hovered = { bg = "#1d2021" }
+find_keyword = { fg = "#d8a657", bold = true }
+find_position = { fg = "#7daea3", italic = true }
+marker_selected = { fg = "#7daea3", bg = "#7daea3" }
+marker_copied = { fg = "#a9b665", bg = "#a9b665" }
+marker_cut = { fg = "#ea6962", bg = "#ea6962" }
+tab_active = { fg = "#d4be98", bg = "#1d2021" }
+tab_inactive = { fg = "#7c6f64", bg = "#141414" }
+border_symbol = "│"
+border_style = { fg = "#32302f" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#1d2021", bg = "#1d2021" }
+mode_normal = { fg = "#171717", bg = "#7daea3", bold = true }
+mode_select = { fg = "#171717", bg = "#d3869b", bold = true }
+mode_unset = { fg = "#171717", bg = "#d3869b", bold = true }
+progress_label = { fg = "#d4be98" }
+progress_normal = { fg = "#32302f" }
+progress_error = { fg = "#ea6962" }
+
+[input]
+border = { fg = "#7daea3" }
+title = {}
+value = {}
+selected = { reversed = true }
+
+[select]
+border = { fg = "#7daea3" }
+active = { fg = "#7daea3" }
+inactive = {}
+
+[tasks]
+border = { fg = "#7daea3" }
+title = {}
+hovered = { underline = true }
+
+[which]
+mask = { bg = "#141414" }
+cand = { fg = "#7daea3" }
+rest = { fg = "#7c6f64" }
+desc = { fg = "#928374" }
+separator = "  "
+separator_style = { fg = "#32302f" }
+
+[help]
+on = { fg = "#7daea3" }
+exec = { fg = "#928374" }
+desc = { fg = "#7c6f64" }
+hovered = { bg = "#282828", bold = true }
+footer = { fg = "#7c6f64", bg = "#141414" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#e78a4e" },
+  { mime = "video/*", fg = "#d8a657" },
+  { mime = "audio/*", fg = "#d8a657" },
+  { mime = "application/zip", fg = "#d3869b" },
+  { mime = "application/gzip", fg = "#d3869b" },
+  { mime = "application/x-tar", fg = "#d3869b" },
+  { mime = "application/x-bzip2", fg = "#d3869b" },
+  { mime = "application/x-7z-compressed", fg = "#d3869b" },
+  { mime = "application/x-rar", fg = "#d3869b" },
+  { url = "*.rs", fg = "#e78a4e" },
+  { url = "*.lua", fg = "#7daea3" },
+  { url = "*.ts", fg = "#7daea3" },
+  { url = "*.js", fg = "#d8a657" },
+  { url = "*.py", fg = "#a9b665" },
+  { url = "*.go", fg = "#89b482" },
+  { url = "*.md", fg = "#928374" },
+  { url = "*.json", fg = "#d8a657" },
+  { url = "*.toml", fg = "#e78a4e" },
+  { url = "*.yaml", fg = "#d3869b" },
+  { url = "*.yml", fg = "#d3869b" },
+]
