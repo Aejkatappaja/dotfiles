@@ -2,7 +2,7 @@
 
 my mac setup. nvim, ghostty, tmux, yabai, sketchybar, and one command to reskin all of it.
 
-![sora desktop](assets/screenshots/sora_home.jpg)
+![cendre desktop](assets/screenshots/cendre_home.jpg)
 
 ## install
 
@@ -14,12 +14,13 @@ no bootstrap script, pick what you need.
 
 ## themes
 
-two full themes: [sora](https://github.com/Aejkatappaja/sora) (my own colorscheme, cool blue/black with a warm gold accent) and a custom gruvbox-material tuned to match it.
+three full themes. [cendre](https://github.com/Aejkatappaja/cendre) is the one running above: every hue computed from a wood fire spectrum rather than picked, dark only, three ground depths. [sora](https://github.com/Aejkatappaja/sora) is my other colorscheme, cool blue/black with a warm gold accent. gruvbox-material is a custom tune to match it.
 
-`bin/theme` flips both across the whole setup in one shot:
+`bin/theme` flips any of them across the whole setup in one shot:
 
 ```bash
 theme            # toggle
+theme cendre
 theme sora
 theme gruvbox
 ```
@@ -27,6 +28,11 @@ theme gruvbox
 it drives 15 surfaces at once: nvim, ghostty, tmux, sketchybar, borders, wallpaper, bat, btop, yazi, hunk, lazygit, opencode, git-delta, obsidian, hlchunk. most update live, the rest on their next launch. there is a Raycast hotkey for the toggle too. full details in `bin/theme.md`.
 
 ## screens
+
+cendre
+
+![cendre home](assets/screenshots/cendre_home.jpg)
+![cendre terminal](assets/screenshots/cendre_term.jpg)
 
 sora
 
