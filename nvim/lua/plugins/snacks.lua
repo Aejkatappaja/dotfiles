@@ -13,7 +13,7 @@ return {
         pick = function(cmd, opts)
           return LazyVim.pick(cmd, opts)()
         end,
-        header = headers.nvim,
+        header = headers.mini,
         -- stylua: ignore
         ---@type snacks.dashboard.Item[]
         keys = {
@@ -21,7 +21,7 @@ return {
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          -- { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
           -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
           -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
