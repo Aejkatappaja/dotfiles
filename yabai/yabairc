@@ -7,10 +7,16 @@ yabai -m config layout stack
 yabai -m config external_bar main:64:0
 
 # gaps
+# These are not round numbers on purpose: they size the Ghostty window so its
+# 11x27pt cell grid fits with no remainder, otherwise a strip of dead pixels sits
+# under the statusline. Both formulas subtract Ghostty's own window-padding, 10
+# per side horizontally and 10 on top:
+#   (2560 - left - right - 20)             % 11 == 0  ->  2486 = 226 cols
+#   (1440 - 64 - top - bottom - 10)        % 27 == 0  ->  1350 = 50 rows
 yabai -m config top_padding 0
-yabai -m config bottom_padding 24
-yabai -m config left_padding 24
-yabai -m config right_padding 24
+yabai -m config bottom_padding 16
+yabai -m config left_padding 27
+yabai -m config right_padding 27
 yabai -m config window_gap 0
 
 # mouse
@@ -26,6 +32,7 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner" manage=off
 yabai -m rule --add app="^QuickTime" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^Font Book$" manage=off
 # yabai -m rule --add app="^Finder$" title="^Copy$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 
