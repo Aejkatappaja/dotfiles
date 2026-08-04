@@ -1,2 +1,15 @@
 **/.DS_Store
 /raycast
+
+**/.claude/settings.local.json
+
+gh/
+gh-dash/
+stripe/
+neonctl/
+
+herdr/*.log
+herdr/session.json
+herdr/.plugins.lock
+hunk/state.json
+themer/current
