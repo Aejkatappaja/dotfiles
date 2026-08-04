@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Shrink the yabai window and pull sketchybar in to match, for theme screenshots.
+# Runtime only: yabairc and sketchybar/bar.lua are never written to, so `off`
+# just replays them.
+# Usage: shotmode [on|off]    (no arg = on)
+
+CFG="$HOME/.config"
+
+# Screenshot geometry. Same rule as yabairc: the paddings keep Ghostty's 11x27pt
+# cell grid exact, otherwise a strip of dead pixels sits under the statusline.
+#   (2560 - 104 - 104 - 20)        % 11 == 0  ->  2332 = 212 cols
+#   (1440 - 64 - 61 - 90 - 10)     % 27 == 0  ->  1215 = 45 rows
+PAD_LEFT=104
+PAD_RIGHT=104
+PAD_TOP=61
+PAD_BOTTOM=90
+
+# PAD_LEFT minus the 8 an item adds before its glyph (item padding_left 5 +
+# icon padding 3), so the first and last glyph line up with the window frame
+BAR_MARGIN=96
+
+case "${1:-on}" in
+on)
+	yabai -m config left_padding "$PAD_LEFT"
+	yabai -m config right_padding "$PAD_RIGHT"
+	yabai -m config top_padding "$PAD_TOP"
+	yabai -m config bottom_padding "$PAD_BOTTOM"
+	sketchybar --bar margin="$BAR_MARGIN"
+	echo "shotmode on  ${PAD_LEFT}/${PAD_RIGHT}/${PAD_TOP}/${PAD_BOTTOM}, bar margin ${BAR_MARGIN}"
+	;;
+off)
+	source "$CFG/yabai/yabairc" >/dev/null
+	sketchybar --reload >/dev/null
+	echo "shotmode off (yabairc + bar.lua replayed)"
+	;;
+*)
+	echo "usage: ${0##*/} [on|off]" >&2
+	exit 1
+	;;
+esac
