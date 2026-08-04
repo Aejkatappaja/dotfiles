@@ -183,7 +183,7 @@ wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
 		wifi:set({
 			icon = {
 				string = connected and icons.wifi.connected or icons.wifi.disconnected,
-				color = connected and colors.sora.steel or colors.sora.rose,
+				color = connected and colors.sora.steel or colors.semantic.error,
 			},
 		})
 	end)

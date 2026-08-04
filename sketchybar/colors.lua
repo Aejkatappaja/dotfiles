@@ -1,5 +1,5 @@
--- Active theme: "sora" | "gruvbox"
-local theme = "sora"
+-- Active theme: "sora" | "gruvbox" | "cendre"
+local theme = "cendre"
 
 local themes = {
 	sora = {
@@ -24,6 +24,17 @@ local themes = {
 			peach = 0xffd0a888,
 			teal = 0xff78b8b0,
 			steel = 0xff8898b8,
+			-- the bar's own accent: apple, clock, active space, default icon
+			primary = 0xff80c8e0,
+		},
+
+		-- status, not syntax: thresholds and failures only. warn must not be
+		-- gold, the cran below it in the cpu/ram ramp.
+		semantic = {
+			error = 0xffc46c78,
+			warn = 0xffd0a888,
+			ok = 0xff90c8a0,
+			info = 0xff80c8e0,
 		},
 
 		highlight = 0xff8898b8,
@@ -55,6 +66,14 @@ local themes = {
 			peach = 0xffe78a4e,
 			teal = 0xff89b482,
 			steel = 0xff928374,
+			primary = 0xff7daea3,
+		},
+
+		semantic = {
+			error = 0xffea6962,
+			warn = 0xffe78a4e,
+			ok = 0xffa9b665,
+			info = 0xff7daea3,
 		},
 
 		highlight = 0xffd4be98,
@@ -62,6 +81,52 @@ local themes = {
 		popup = { bg = 0xc01d2021, border = 0xff928374 },
 		bg1 = 0xff32302f,
 		bg2 = 0xff3c3836,
+	},
+
+	-- Cendre (hard) -- canonical palette from lua/cendre/palette.lua
+	cendre = {
+		black = 0xff171311,
+		white = 0xffe6d5c2,
+		red = 0xffd1766e,
+		green = 0xff99af6b,
+		blue = 0xff58bdff,
+		yellow = 0xfffcba81,
+		orange = 0xffea9875,
+		magenta = 0xff9480ba,
+		grey = 0xffa09384,
+		shadow = 0xff0f0c0a,
+
+		-- The five pigments, under the accent names this config already uses.
+		-- cyan was 0xff58bdff, which is semantic.info: a diagnostic worn as an
+		-- everyday accent. frost is the palette's only cool pigment.
+		accent = {
+			cyan = 0xff4e89a2, -- frost
+			purple = 0xff9480ba, -- potassium
+			sage = 0xff99af6b, -- sap
+			rose = 0xffd1766e, -- cinder
+			gold = 0xfffcba81, -- brass
+			peach = 0xffea9875, -- ember
+			teal = 0xff4e89a2, -- frost
+			steel = 0xffa09384, -- fg_dim
+			-- the bar's own accent. Warm here, because the ground is hue 43 and
+			-- a cool bar over an ash desk reads as two systems.
+			primary = 0xffea9875, -- ember
+		},
+
+		-- Diagnostics carry more chroma than any pigment, on purpose, so a
+		-- failing widget never wears the same red as a keyword.
+		semantic = {
+			error = 0xffd25780,
+			warn = 0xfff4a21c,
+			ok = 0xff43b16a,
+			info = 0xff58bdff,
+		},
+
+		highlight = 0xffe6d5c2,
+		bar = { bg = 0xcc171311, border = 0xff362f2c },
+		popup = { bg = 0xc00f0c0a, border = 0xff362f2c },
+		bg1 = 0xff201b19,
+		bg2 = 0xff2a2422,
 	},
 }
 
@@ -81,6 +146,7 @@ return {
 	transparent = 0x00000000,
 
 	sora = t.accent,
+	semantic = t.semantic,
 	highlight = t.highlight,
 	bar = t.bar,
 	popup = t.popup,

@@ -28,9 +28,9 @@ cpu:subscribe("cpu_update", function(env)
 		if load < 60 then
 			color = colors.sora.gold
 		elseif load < 80 then
-			color = colors.sora.peach
+			color = colors.semantic.warn
 		else
-			color = colors.red
+			color = colors.semantic.error
 		end
 	end
 
