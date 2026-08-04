@@ -7,7 +7,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 local clock = sbar.add("item", {
 	icon = {
 		string = "􀐫",
-		color = colors.sora.cyan,
+		color = colors.sora.primary,
 		padding_left = 8,
 		font = {
 			style = settings.font.style_map["Bold"],
@@ -15,7 +15,7 @@ local clock = sbar.add("item", {
 		},
 	},
 	label = {
-		color = colors.sora.cyan,
+		color = colors.sora.primary,
 		padding_right = 8,
 		font = {
 			family = settings.font.numbers,

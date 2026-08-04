@@ -11,47 +11,47 @@
     // "type": "kitty",
     "type": "kitty-icat",
     // "type": "kitty-direct",
-    "source": "~/.config/fastfetch/images/pink-monster.png",
+    "source": "~/.config/fastfetch/images/autumn-cendre.png",
     "height": 25,
     "width": 25,
     "position": "left",
     "padding": {
       "top": 4,
       "left": 2,
-      "right": 5,
-    },
+      "right": 5
+    }
   },
   "display": {
-    "separator": " ",
+    "separator": " "
   },
   "modules": [
     "break",
     {
       "type": "custom",
-      "format": "┌─────────────Hardware─────────────┐",
-      "outputColor": "blue",
+      "format": "── Hardware",
+      "outputColor": "33"
     },
     {
       "type": "host",
       "key": " PC ",
-      "keyColor": "red",
+      "keyColor": "red"
     },
     {
       "type": "cpu",
       "key": "│ ├ ",
-      "keyColor": "red",
+      "keyColor": "red"
     },
     {
       "type": "gpu",
       "key": "│ ├󰒆 ",
-      "keyColor": "red",
+      "keyColor": "red"
     },
     {
       "type": "disk",
       "key": "│ ├ ",
       "folders": "/",
       "format": "{size-used} / {size-total} ({size-percentage})",
-      "keyColor": "red",
+      "keyColor": "red"
     },
     // {
     //   "type": "swap",
@@ -64,37 +64,33 @@
       "keyColor": "red",
       // "format": "MONITOR ({name})",
       // "format": "Apple {name} {width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches, {ppi} ppi)",
-      "format": " {name} 5K {ppi} ppi",
+      "format": " {name} 5K {ppi} ppi"
     },
     {
       "type": "memory",
       "key": "└ └󰍛 ",
-      "keyColor": "red",
+      "keyColor": "red"
     },
+    "break",
     {
       "type": "custom",
-      "format": "└──────────────────────────────────┘",
-      "outputColor": "blue",
-    },
-    {
-      "type": "custom",
-      "format": "┌─────────────Software─────────────┐",
-      "outputColor": "blue",
+      "format": "── Software",
+      "outputColor": "33"
     },
     {
       "type": "os",
       "key": " OS ",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "kernel",
       "key": "│ ├ ",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     {
       "type": "packages",
       "key": "│ ├󰏖 ",
-      "keyColor": "green",
+      "keyColor": "green"
     },
     // {
     //   "type": "localip",
@@ -103,13 +99,13 @@
     // },
     {
       "type": "shell",
-      "key": "└ └ ",
-      "keyColor": "green",
+      "key": "│ ├ ",
+      "keyColor": "green"
     },
     {
       "type": "de",
       "key": " DE ",
-      "keyColor": "blue",
+      "keyColor": "green"
     },
     // {
     //   "type": "lm",
@@ -129,24 +125,20 @@
     // },
     {
       "type": "terminal",
-      "key": "│ ├ ",
-      "keyColor": "blue",
+      "key": "└ └ ",
+      "keyColor": "green"
     },
     {
       "type": "terminalfont",
       "key": "└ └ ",
-      "keyColor": "blue",
+      "keyColor": "green"
     },
-    {
-      "type": "custom",
-      "format": "└──────────────────────────────────┘",
-      "outputColor": "blue",
-    },
+    "break",
     {
       "type": "custom",
       // "format": "┌───────────Uptime / Age───────────┐",
-      "format": "┌──────────────Uptime──────────────┐",
-      "outputColor": "blue",
+      "format": "── Uptime",
+      "outputColor": "33"
     },
     // {
     //   "type": "command",
@@ -157,12 +149,7 @@
     {
       "type": "uptime",
       "key": "  Uptime",
-      "keyColor": "magenta",
-    },
-    {
-      "type": "custom",
-      "format": "└──────────────────────────────────┘",
-      "outputColor": "blue",
-    },
-  ],
+      "keyColor": "90"
+    }
+  ]
 }

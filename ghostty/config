@@ -1,8 +1,16 @@
-theme = sora
+theme = cendre
 
 # font-family                    = TX-02
 # font-family                    = DepartureMono Nerd Font Mono
-font-family                    = JetBrainsMono Nerd Font Mono
+# font-family                    = JetBrainsMono Nerd Font Mono
+font-family = Google Sans Code
+font-variation = wght=350
+font-variation-italic = wght=350
+font-variation-bold = wght=800
+font-variation-bold-italic = wght=800
+adjust-cell-height = 20%
+adjust-cursor-height = 20%
+font-feature = ss01
 
 # background-image               = /Users/anton/.config/wallpapers/mima.png
 # background-image               = /Users/anton/.config/wallpapers/ghostty_planet.png
@@ -39,9 +47,15 @@ link-url                       = true
 
 background-opacity             = 1
 
+# The cell is 11x27pt at this font and size, so the grid only fills the window
+# exactly when (width - 2*padding-x) and (height - 2*padding-y) are multiples of
+# it. yabai imposes the window size, so the padding here is paired with the
+# per-side padding in yabairc; changing one without the other leaves a dead strip
+# of pixels under the last row. See the comment in yabai/yabairc.
 window-padding-x               = 10
-window-padding-y               = 10
-window-padding-balance = true
+window-padding-y               = 10,0
+window-padding-color           = extend
+
 window-save-state              = always
 
 custom-shader                  = shaders/cursor_smear.glsl

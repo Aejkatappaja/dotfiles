@@ -19,7 +19,7 @@ for i = 1, 10, 1 do
 		label = {
 			padding_right = 20,
 			color = colors.white,
-			highlight_color = colors.sora.cyan,
+			highlight_color = colors.sora.primary,
 			font = "sketchybar-app-font:Regular:16.0",
 			y_offset = -1,
 		},

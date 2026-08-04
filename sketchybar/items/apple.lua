@@ -10,7 +10,7 @@ local apple = sbar.add("item", {
 		string = icons.apple,
 		padding_right = 20,
 		padding_left = 8,
-		color = colors.sora.cyan,
+		color = colors.sora.primary,
 	},
 	label = { drawing = false },
 	--	background = {

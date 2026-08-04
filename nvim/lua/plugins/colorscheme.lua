@@ -6,29 +6,7 @@ function ColorMyPencils(color)
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 end
 
-local transparent = true
-local bg_highlight = "#143652"
-
 return {
-  {
-    "folke/tokyonight.nvim",
-    priority = 1000,
-    lazy = false,
-    opts = {
-      style = "night",
-      transparent = transparent,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-      on_colors = function(colors)
-        colors.bg_float = "NONE"
-        colors.bg_highlight = bg_highlight
-        colors.bg_sidebar = "NONE"
-        colors.bg_statusline = "NONE"
-      end,
-    },
-  },
   {
     "sainnhe/gruvbox-material",
     priority = 1000,
@@ -129,6 +107,18 @@ return {
     end,
   },
   {
+    "aejkatappaja/cendre",
+    name = "cendre",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("cendre").setup({
+        -- transparent = true,
+        background = "hard",
+      })
+    end,
+  },
+  {
     "aejkatappaja/sora",
     name = "sora",
     lazy = false,
@@ -140,7 +130,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "sora",
+      colorscheme = "cendre",
     },
   },
 }

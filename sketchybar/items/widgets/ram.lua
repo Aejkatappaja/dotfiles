@@ -33,9 +33,9 @@ ram:subscribe({ "routine", "forced" }, function(env)
 				if used < 70 then
 					color = colors.sora.gold
 				elseif used < 85 then
-					color = colors.sora.peach
+					color = colors.semantic.warn
 				else
-					color = colors.red
+					color = colors.semantic.error
 				end
 			end
 

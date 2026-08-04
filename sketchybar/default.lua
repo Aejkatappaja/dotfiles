@@ -21,7 +21,7 @@ sbar.default({
 			style = settings.font.style_map["Bold"],
 			size = 13.0,
 		},
-		color = colors.sora.cyan,
+		color = colors.sora.primary,
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,
 	},

@@ -44,6 +44,7 @@ return {
 	["DEVONthink 3"] = ":devonthink3:",
 	["Docker"] = ":docker:",
 	["Docker Desktop"] = ":docker:",
+	["OrbStack"] = ":orbstack:",
 	["Matlab"] = ":matlab:",
 	["VLC"] = ":vlc:",
 	["Alacritty"] = ":alacritty:",

@@ -2,13 +2,16 @@
 
 options=(
   # style=round
-  width=10.0
+  width=3.0
   hidpi=on
   # TOKYO NIGHT
   # active_color=0xFF7AA2F7
 
   # GRUVBOX MATERIAL
-  active_color=0xFF80C8E0
+  # active_color=0xFFEA9875
+
+  # CENDRE
+  active_color=0xFFEA9875
   # SORA
   # active_color=0xFF80C8E0
 
