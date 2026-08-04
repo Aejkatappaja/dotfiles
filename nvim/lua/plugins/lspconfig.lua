@@ -63,16 +63,11 @@ return {
         "jsonc",
         "css",
       }
+      -- Biome only: the prettier extra injects itself into every one of these
+      -- filetypes and reformats Biome repos (2 spaces instead of tabs).
+      opts.formatters_by_ft = opts.formatters_by_ft or {}
       for _, ft in ipairs(biome_fts) do
-        opts.formatters_by_ft = opts.formatters_by_ft or {}
-        opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-        local filtered = {}
-        for _, f in ipairs(opts.formatters_by_ft[ft]) do
-          if f ~= "biome" and f ~= "biome-organize-imports" then
-            table.insert(filtered, f)
-          end
-        end
-        opts.formatters_by_ft[ft] = filtered
+        opts.formatters_by_ft[ft] = { "biome" }
       end
     end,
   },
