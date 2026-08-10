@@ -21,6 +21,7 @@
     "peach": "#d0a888",
     "teal": "#78b8b0",
     "steel": "#8898b8",
+    "variable": "#b4bcd0",
     "error": "#c46c78",
     "warning": "#c8a860",
     "success": "#68a888",
@@ -44,10 +45,12 @@
 
     "text": "fg",
     "textMuted": "fgDim",
+    "selectedListItemText": "fgBright",
 
     "background": "bg",
     "backgroundPanel": "bgFloat",
     "backgroundElement": "bgElevated",
+    "backgroundMenu": "bgFloat",
 
     "border": "border",
     "borderActive": "cyan",
@@ -84,7 +87,7 @@
     "syntaxComment": "fgComment",
     "syntaxKeyword": "purple",
     "syntaxFunction": "cyan",
-    "syntaxVariable": "#b4bcd0",
+    "syntaxVariable": "variable",
     "syntaxString": "sage",
     "syntaxNumber": "gold",
     "syntaxType": "peach",
