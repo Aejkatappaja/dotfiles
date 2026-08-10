@@ -169,7 +169,10 @@ fi
 if anchor '^[[:space:]]*active_color=' "$BORDERS" 'borders'; then
   sed -i '' -E "s|^([[:space:]]*)active_color=.*|\1active_color=$BORDER_COLOR|" "$BORDERS"
 fi
-if command -v borders >/dev/null 2>&1; then
+# only talk to a live daemon: with no instance running, `borders <arg>` becomes
+# the daemon itself and its whole config is that one arg, dropping the whitelist.
+# bordersrc already holds the new color, so the next proper launch picks it up.
+if pgrep -x borders >/dev/null 2>&1; then
   borders active_color="$BORDER_COLOR" >/dev/null 2>&1 || true
 fi
 
