@@ -22,7 +22,7 @@ font-feature = ss01
 # font-size                      = 20
 font-size                      = 18
 
-font-thicken                   = true
+# font-thicken                   = true
 font-synthetic-style           = false
 font-style-bold                = false
 
