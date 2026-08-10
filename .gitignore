@@ -26,6 +26,13 @@ yazi/themes/*.bak
 # build artifact: zipped from firefox-theme-sora/manifest.json
 firefox-theme-sora/*.xpi
 
+# only the wallpapers the theme confs reference stay in the repo, the rest is
+# a local collection: it stays on disk, out of git
+wallpapers/*
+!wallpapers/tangerines.jpg
+!wallpapers/stellar_sora.png
+!wallpapers/current-theme.jpg
+
 # local-only: zed backups, personal stash, prompt library db
 zed/*_backup.json
 zed/zed-stash/
