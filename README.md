@@ -1,6 +1,6 @@
 # dotfiles
 
-my mac setup. nvim, ghostty, tmux, yabai, sketchybar, and one command to reskin all of it.
+my mac setup. nvim, ghostty, tmux, yabai, and one command to reskin all of it.
 
 ![cendre desktop](assets/screenshots/cendre_home.jpg)
 
@@ -50,7 +50,9 @@ firefox start page
 
 ## stack
 
-nvim (lazyvim), ghostty (custom themes, bg embedded), tmux (tokyo-night plugin), yazi, lazygit, bat, btop, hunk, opencode, git-delta, starship, sketchybar (lua), yabai (stack layout, no SIP), janky borders, fastfetch, obsidian.
+nvim (lazyvim), ghostty (custom themes, bg embedded), tmux (tokyo-night plugin), yazi, lazygit, bat, btop, hunk, opencode, git-delta, starship, yabai (stack layout, no SIP), janky borders, fastfetch, obsidian.
+
+no status bar anymore. sketchybar is off and the macos menubar stays hidden, so the full 1440 goes to the window. `sketchybar/` and its `bin/theme` hook are still here if you want it back.
 
 ## structure
 
@@ -67,7 +69,7 @@ btop/             btop + themes
 hunk/             hunk + theme snapshots
 opencode/         opencode + themes
 git/              git + delta gitconfigs
-sketchybar/       sketchybar lua
+sketchybar/       sketchybar lua (not running anymore)
 yabai/            yabai
 borders/          janky borders
 fastfetch/        fastfetch
