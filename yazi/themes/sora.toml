@@ -1,58 +1,98 @@
 # Sora theme for Yazi
 # https://github.com/aejkatappaja/sora.nvim
 
-[manager]
+[mgr]
 cwd = { fg = "#80c8e0" }
-hovered = { bg = "#1e2430" }
-preview_hovered = { bg = "#14161e" }
 find_keyword = { fg = "#d4b878", bold = true }
 find_position = { fg = "#80c8e0", italic = true }
-marker_selected = { fg = "#80c8e0", bg = "#80c8e0" }
+symlink_target = { fg = "#586478", italic = true }
 marker_copied = { fg = "#90c8a0", bg = "#90c8a0" }
 marker_cut = { fg = "#c46c78", bg = "#c46c78" }
-tab_active = { fg = "#c8d0e0", bg = "#14161e" }
-tab_inactive = { fg = "#586478", bg = "#0a0c12" }
-border_symbol = "│"
+marker_marked = { fg = "#b0a0d8", bg = "#b0a0d8" }
+marker_selected = { fg = "#80c8e0", bg = "#80c8e0" }
+count_copied = { fg = "#0e1018", bg = "#90c8a0" }
+count_cut = { fg = "#0e1018", bg = "#c46c78" }
+count_selected = { fg = "#0e1018", bg = "#80c8e0" }
 border_style = { fg = "#222838" }
 
+[tabs]
+active = { fg = "#c8d0e0", bg = "#14161e" }
+inactive = { fg = "#586478", bg = "#0a0c12" }
+
+[mode]
+normal_main = { fg = "#0e1018", bg = "#80c8e0", bold = true }
+normal_alt = { fg = "#80c8e0", bg = "#14161e" }
+select_main = { fg = "#0e1018", bg = "#b0a0d8", bold = true }
+select_alt = { fg = "#b0a0d8", bg = "#14161e" }
+unset_main = { fg = "#0e1018", bg = "#d0909c", bold = true }
+unset_alt = { fg = "#d0909c", bg = "#14161e" }
+
+[indicator]
+parent = { bg = "#14161e" }
+current = { bg = "#1e2430" }
+preview = { bg = "#14161e" }
+
 [status]
-separator_open = ""
-separator_close = ""
-separator_style = { fg = "#14161e", bg = "#14161e" }
-mode_normal = { fg = "#0e1018", bg = "#80c8e0", bold = true }
-mode_select = { fg = "#0e1018", bg = "#b0a0d8", bold = true }
-mode_unset = { fg = "#0e1018", bg = "#d0909c", bold = true }
-progress_label = { fg = "#c8d0e0" }
-progress_normal = { fg = "#222838" }
-progress_error = { fg = "#c46c78" }
-
-[input]
-border = { fg = "#80c8e0" }
-title = {}
-value = {}
-selected = { reversed = true }
-
-[select]
-border = { fg = "#80c8e0" }
-active = { fg = "#80c8e0" }
-inactive = {}
-
-[tasks]
-border = { fg = "#80c8e0" }
-title = {}
-hovered = { underline = true }
+overall = { fg = "#c8d0e0", bg = "#14161e" }
+perm_sep = { fg = "#364050" }
+perm_type = { fg = "#78b8b0" }
+perm_read = { fg = "#d4b878" }
+perm_write = { fg = "#d0909c" }
+perm_exec = { fg = "#90c8a0" }
+progress_label = { fg = "#c8d0e0", bold = true }
+progress_normal = { fg = "#80c8e0", bg = "#14161e" }
+progress_error = { fg = "#0e1018", bg = "#c46c78" }
 
 [which]
 mask = { bg = "#0a0c12" }
 cand = { fg = "#80c8e0" }
 rest = { fg = "#586478" }
 desc = { fg = "#9aa4b8" }
-separator = "  "
 separator_style = { fg = "#222838" }
+
+[confirm]
+border = { fg = "#80c8e0" }
+title = { fg = "#80c8e0" }
+body = { fg = "#c8d0e0" }
+list = { fg = "#9aa4b8" }
+btn_yes = { fg = "#0e1018", bg = "#80c8e0", bold = true }
+btn_no = { fg = "#9aa4b8" }
+
+[spot]
+border = { fg = "#80c8e0" }
+title = { fg = "#80c8e0" }
+tbl_col = { fg = "#78b8b0" }
+tbl_cell = { fg = "#0e1018", bg = "#80c8e0" }
+
+[notify]
+title_info = { fg = "#5ca8c8" }
+title_warn = { fg = "#c8a860" }
+title_error = { fg = "#c46c78" }
+
+[pick]
+border = { fg = "#80c8e0" }
+active = { fg = "#80c8e0", bold = true }
+inactive = { fg = "#9aa4b8" }
+
+[input]
+border = { fg = "#80c8e0" }
+title = { fg = "#80c8e0" }
+value = { fg = "#c8d0e0" }
+selected = { bg = "#1e2430" }
+
+[cmp]
+border = { fg = "#80c8e0" }
+active = { fg = "#0e1018", bg = "#80c8e0" }
+inactive = { fg = "#9aa4b8" }
+
+[tasks]
+border = { fg = "#80c8e0" }
+title = { fg = "#80c8e0" }
+hovered = { fg = "#80c8e0", bold = true }
 
 [help]
 on = { fg = "#80c8e0" }
-exec = { fg = "#9aa4b8" }
+run = { fg = "#9aa4b8" }
 desc = { fg = "#586478" }
 hovered = { bg = "#1e2430", bold = true }
 footer = { fg = "#586478", bg = "#0a0c12" }
