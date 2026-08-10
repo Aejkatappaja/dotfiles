@@ -12,7 +12,8 @@ sbar.bar({
 	-- Lines the first/last glyph up with the window frame: yabai's
 	-- left/right_padding (27) minus the 8 an item adds before its glyph
 	-- (padding_left 5 + icon padding 3)
-	margin = 19,
+	-- margin = 19,
+	margin = 96,
 	sticky = "on",
 	y_offset = 10,
 	shadow = true,
