@@ -1,11 +1,10 @@
 # theme
 
-Switches my whole setup between the color themes defined in `bin/themes/*.conf`. Currently **sora**, **gruvbox-material** and **cendre**.
+Switches my whole setup between the color themes defined in `bin/themes/*.conf`. Currently **sora** and **cendre**.
 
 ```bash
 theme            # cycle to the next theme
 theme sora       # force a theme by name
-theme gruvbox
 theme cendre
 ```
 
@@ -40,20 +39,20 @@ Artifacts to provide: a sketchybar palette block in `colors.lua`, a tmux palette
 | wallpaper | `wallpapers/current-theme.jpg` | overwrites this fixed file with the theme image, then restarts WallpaperAgent |
 | ghostty | `ghostty/config` | swaps the theme, then reloads the front window |
 
-sketchybar, tmux, nvim, borders and ghostty update live (ghostty needs the Accessibility permission described below). bat, hunk and git-delta are CLIs, so their next invocation picks up the change. hlchunk, btop, yazi, lazygit and opencode apply on their next launch. Obsidian applies its theme (`Sora` or `Material Gruvbox`) on restart.
+sketchybar, tmux, nvim, borders and ghostty update live (ghostty needs the Accessibility permission described below). bat, hunk and git-delta are CLIs, so their next invocation picks up the change. hlchunk, btop, yazi, lazygit and opencode apply on their next launch. Obsidian applies its theme (`Sora` or `cendre`) on restart.
 
 yazi, hunk and lazygit switch by copying a whole theme-file snapshot (`<palette>.toml` / `<palette>.yml`) over the live config, so edits to non-color settings in those live files get overwritten on switch. Keep such edits in the per-palette snapshots instead.
 
 ## Per-theme values
 
-- **gruvbox-material**: ghostty theme `gruvbox-material` (background `#171717`), sketchybar background `#171717`, border `#D4BE98`, tmux copy-mode `bg=#d4be98`, hlchunk `#F9B34C`, wallpaper `stellar_gruvbox.png`.
 - **sora**: ghostty theme `sora` (background `#0e1018`), border `#80C8E0`, tmux copy-mode `bg=#1e2430`, hlchunk `#80C8E0`, wallpaper `stellar_sora.png`.
+- **cendre**: ghostty theme `cendre` (background `#171311`), border `#EA9875`, tmux copy-mode `bg=#2f1e17`, hlchunk `#EA9875`, wallpaper `tangerines.jpg`.
 
-bat, btop, yazi, hunk, lazygit, opencode and git-delta each use their matching palette named `gruvbox-material` or `sora`. The `gruvbox-material` variants were generated from the sora artifacts by remapping the palette to the nvim gruvbox-material colors, so they match the rest of the setup. git-delta's `syntax-theme` points at the bat `gruvbox-material` theme.
+bat, btop, yazi, hunk, lazygit, opencode and git-delta each use their matching palette named `sora` or `cendre`. git-delta's `syntax-theme` points at the bat theme of the same name.
 
 gh-dash is not wired: it has no color config and follows the terminal's ANSI colors, so it already tracks ghostty.
 
-Each ghostty theme file under `ghostty/themes/` embeds its own background, so the script only swaps the `theme` line and the config has no `background` line of its own. The custom `gruvbox-material` theme matches the nvim palette.
+Each ghostty theme file under `ghostty/themes/` embeds its own background, so the script only swaps the `theme` line and the config has no `background` line of its own.
 
 ## Notes
 

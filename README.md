@@ -14,15 +14,14 @@ no bootstrap script, pick what you need.
 
 ## themes
 
-three full themes. [cendre](https://github.com/Aejkatappaja/cendre) is the one running above: every hue computed from a wood fire spectrum rather than picked, dark only, three ground depths. [sora](https://github.com/Aejkatappaja/sora) is my other colorscheme, cool blue/black with a warm gold accent. gruvbox-material is a custom tune to match it.
+two full themes. [cendre](https://github.com/Aejkatappaja/cendre) is the one running above: every hue computed from a wood fire spectrum rather than picked, dark only, three ground depths. [sora](https://github.com/Aejkatappaja/sora) is my other colorscheme, cool blue/black with a warm gold accent.
 
-`bin/theme` flips any of them across the whole setup in one shot:
+`bin/theme` flips either of them across the whole setup in one shot:
 
 ```bash
 theme            # toggle
 theme cendre
 theme sora
-theme gruvbox
 ```
 
 it drives 15 surfaces at once: nvim, ghostty, tmux, sketchybar, borders, wallpaper, bat, btop, yazi, hunk, lazygit, opencode, git-delta, obsidian, hlchunk. most update live, the rest on their next launch. there is a Raycast hotkey for the toggle too. full details in `bin/theme.md`.
@@ -38,11 +37,6 @@ sora
 
 ![sora home](assets/screenshots/sora_home.jpg)
 ![sora terminal](assets/screenshots/sora_term.jpg)
-
-gruvbox-material
-
-![gruvbox home](assets/screenshots/gruvbox_home.jpg)
-![gruvbox terminal](assets/screenshots/gruvbox_term.jpg)
 
 firefox start page
 

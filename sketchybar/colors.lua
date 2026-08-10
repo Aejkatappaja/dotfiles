@@ -1,4 +1,4 @@
--- Active theme: "sora" | "gruvbox" | "cendre"
+-- Active theme: "sora" | "cendre"
 local theme = "cendre"
 
 local themes = {
@@ -42,45 +42,6 @@ local themes = {
 		popup = { bg = 0xc014161e, border = 0xff586478 },
 		bg1 = 0xff1e2430,
 		bg2 = 0xff222838,
-	},
-
-	-- Gruvbox Material (dark, medium)
-	gruvbox = {
-		black = 0xff282828,
-		white = 0xffd4be98,
-		red = 0xffea6962,
-		green = 0xffa9b665,
-		blue = 0xff7daea3,
-		yellow = 0xffd8a657,
-		orange = 0xffe78a4e,
-		magenta = 0xffd3869b,
-		grey = 0xff928374,
-		shadow = 0xff1d2021,
-
-		accent = {
-			cyan = 0xff7daea3,
-			purple = 0xffd3869b,
-			sage = 0xffa9b665,
-			rose = 0xffea6962,
-			gold = 0xffd8a657,
-			peach = 0xffe78a4e,
-			teal = 0xff89b482,
-			steel = 0xff928374,
-			primary = 0xff7daea3,
-		},
-
-		semantic = {
-			error = 0xffea6962,
-			warn = 0xffe78a4e,
-			ok = 0xffa9b665,
-			info = 0xff7daea3,
-		},
-
-		highlight = 0xffd4be98,
-		bar = { bg = 0xcc171717, border = 0xff3c3836 },
-		popup = { bg = 0xc01d2021, border = 0xff928374 },
-		bg1 = 0xff32302f,
-		bg2 = 0xff3c3836,
 	},
 
 	-- Cendre (hard) -- canonical palette from lua/cendre/palette.lua

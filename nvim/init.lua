@@ -1,12 +1,3 @@
--- Apply custom highlights on colorscheme change.
--- Must be declared before executing ':colorscheme'.
-grpid = vim.api.nvim_create_augroup("custom_highlights_gruvboxmaterial", {})
-vim.api.nvim_create_autocmd("ColorScheme", {
-  group = grpid,
-  pattern = "gruvbox-material",
-  -- floating popups
-  command = "hi NormalFloat guibg=NONE |" .. "hi FloatBorder guibg=NONE",
-})
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimStarted",
   callback = function()

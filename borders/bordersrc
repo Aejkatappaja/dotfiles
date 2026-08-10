@@ -7,9 +7,6 @@ options=(
   # TOKYO NIGHT
   # active_color=0xFF7AA2F7
 
-  # GRUVBOX MATERIAL
-  # active_color=0xFFEA9875
-
   # CENDRE
   active_color=0xFFEA9875
   # SORA
