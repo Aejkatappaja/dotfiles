@@ -13,3 +13,6 @@ herdr/session.json
 herdr/.plugins.lock
 hunk/state.json
 themer/current
+
+# local-only: screenshot geometry, tied to this machine's display
+bin/shotmode
