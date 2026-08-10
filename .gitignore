@@ -7,6 +7,8 @@ gh/
 gh-dash/
 stripe/
 neonctl/
+zed/
+slack/
 
 herdr/*.log
 herdr/session.json
@@ -32,8 +34,3 @@ wallpapers/*
 !wallpapers/tangerines.jpg
 !wallpapers/stellar_sora.png
 !wallpapers/current-theme.jpg
-
-# local-only: zed backups, personal stash, prompt library db
-zed/*_backup.json
-zed/zed-stash/
-zed/prompts/
