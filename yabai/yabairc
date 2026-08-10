@@ -3,20 +3,25 @@
 # layout stack = une seule fenêtre visible à la fois (pas besoin de SIP)
 yabai -m config layout stack
 
-# padding pour sketchybar (bar height 40 + y_offset 10 + margin)
-yabai -m config external_bar main:64:0
+# No external bar since sketchybar was dropped, and the macOS menubar is hidden
+# (_HIHideMenuBar), so the whole 1440 is ours.
+yabai -m config external_bar main:0:0
 
 # gaps
 # These are not round numbers on purpose: they size the Ghostty window so its
 # 11x27pt cell grid fits with no remainder, otherwise a strip of dead pixels sits
 # under the statusline. Both formulas subtract Ghostty's own window-padding, 10
-# per side horizontally and 10 on top:
-#   (2560 - left - right - 20)             % 11 == 0  ->  2486 = 226 cols
-#   (1440 - 64 - top - bottom - 10)        % 27 == 0  ->  1350 = 50 rows
-yabai -m config top_padding 0
-yabai -m config bottom_padding 16
-yabai -m config left_padding 27
-yabai -m config right_padding 27
+# per side horizontally and 10 on top (window-padding-y is "10,0"):
+#   (2560 - left - right - 20)   % 11 == 0  ->  2332 = 212 cols
+#   (1440 - top - bottom - 10)   % 27 == 0  ->  1242 =  46 rows
+#
+# left/right must be congruent to 5 mod 11, top+bottom to 26 mod 27. Other rungs
+# on that ladder, from airy to dense: 107/108 -> 45 rows, 80/81 -> 47, 67 -> 48.
+
+yabai -m config left_padding 104
+yabai -m config right_padding 104
+yabai -m config top_padding 94
+yabai -m config bottom_padding 94
 yabai -m config window_gap 0
 
 # mouse
@@ -26,7 +31,6 @@ yabai -m config focus_follows_mouse off
 # placement
 yabai -m config window_placement second_child
 
-# apps flottantes (pas gérées par yabai)
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner" manage=off
