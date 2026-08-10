@@ -54,7 +54,6 @@ no status bar anymore. sketchybar is off and the macos menubar stays hidden, so 
 bin/              scripts (theme = the switcher, b = brew helper)
 nvim/             lazyvim
 ghostty/          ghostty + themes
-kitty/            kitty
 tmux/             tmux
 yazi/             yazi + theme snapshots
 lazygit/          lazygit + theme snapshots

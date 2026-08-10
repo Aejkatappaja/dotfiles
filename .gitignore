@@ -9,6 +9,7 @@ stripe/
 neonctl/
 zed/
 slack/
+kitty/
 
 herdr/*.log
 herdr/session.json
