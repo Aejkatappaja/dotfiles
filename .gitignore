@@ -16,3 +16,17 @@ themer/current
 
 # local-only: screenshot geometry, tied to this machine's display
 bin/shotmode
+
+# local-only: pre-edit backups of theme snapshots
+hunk/*.bak
+opencode/themes/*.bak
+yazi/*.bak
+yazi/themes/*.bak
+
+# build artifact: zipped from firefox-theme-sora/manifest.json
+firefox-theme-sora/*.xpi
+
+# local-only: zed backups, personal stash, prompt library db
+zed/*_backup.json
+zed/zed-stash/
+zed/prompts/
