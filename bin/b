@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+# gum 2.x probes the terminal (DECRQM 2026/2027, kitty keyboard protocol).
+# Under tmux the replies arrive after gum has exited, so they leak into the
+# shell's stdin and the keyboard mode is left half-applied. Reset and drain.
+drain_tty() {
+  [[ -t 0 ]] || return 0
+  printf '\e[=0;1u\e[?2004l\e[>4m'
+  read -rst 0.2 -n 4096 _ 2>/dev/null
+  return 0
+}
+
 gum style \
   --foreground 12 --border-foreground 12 --border double \
   --align center --width 50 --margin "1 0" --padding "1 2" \
@@ -10,20 +20,27 @@ gum style \
 ██████╔╝██║  ██║███████╗╚███╔███╔╝
 ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚══╝╚══╝'
 
-gum spin --show-output --spinner minidot --title "Updating brew..." -- brew update
+brew update
 printf "\n"
 
-OUTDATED=$(gum spin --show-output --spinner minidot --title "Checking for outdated brew packages" -- brew outdated)
+OUTDATED=$(brew outdated --verbose)
 
 if [[ -n "$OUTDATED" ]]; then
   echo "$OUTDATED"
-  gum confirm --selected.background=2 --selected.foreground=0 "Upgrade the outdated formulae above?" && NONINTERACTIVE=1 brew upgrade
   printf "\n"
-  brew cleanup --prune=all
-  printf "\n"
+  if gum confirm --selected.background=2 --selected.foreground=0 "Upgrade the outdated formulae above?"; then
+    drain_tty
+    brew upgrade --yes
+    printf "\n"
+    brew cleanup --prune=all
+    printf "\n"
+  else
+    drain_tty
+  fi
 else
   echo "All brew packages are up to date."
   printf "\n"
 fi
 
-gum spin --show-output --spinner minidot --title "Checking for brew issues..." -- brew doctor
+brew doctor
+drain_tty
