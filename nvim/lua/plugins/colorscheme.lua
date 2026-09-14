@@ -8,12 +8,6 @@ end
 
 return {
   {
-    "wtfox/luna.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  {
     "rose-pine/neovim",
     name = "rose-pine",
     lazy = true,
@@ -50,6 +44,7 @@ return {
       require("cendre").setup({
         background = "hard",
         dim_inactive = true,
+        transparent = true,
       })
     end,
   },

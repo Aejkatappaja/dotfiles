@@ -20,54 +20,31 @@ return {
       },
     },
   },
-  -- Biome LSP: fixAll on save
-  {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      -- Keep opts intact, just add the autocmd
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("BiomeFixAll", { clear = true }),
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if not client or client.name ~= "biome" then
-            return
-          end
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("BiomeFixAllOnSave", { clear = true }),
-            callback = function()
-              vim.lsp.buf.code_action({
-                context = {
-                  only = { "source.fixAll.biome", "source.organizeImports.biome" },
-                  diagnostics = {},
-                },
-                apply = true,
-              })
-            end,
-          })
-        end,
-      })
-      return opts
-    end,
-  },
-  -- Conform config
+  -- Formatting: biome-check in repos that have a biome config, prettier elsewhere.
+  -- biome-check runs format + lint fixes + organize imports in one pass, so no
+  -- LSP code_action hook is needed.
   {
     "stevearc/conform.nvim",
     optional = true,
     opts = function(_, opts)
-      local biome_fts = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json",
-        "jsonc",
-        "css",
-      }
-      -- Biome only: the prettier extra injects itself into every one of these
-      -- filetypes and reformats Biome repos (2 spaces instead of tabs).
+      local biome_config = { "biome.json", "biome.jsonc", ".biome.json", ".biome.jsonc" }
+
+      local function biome_or(fallback)
+        return function(bufnr)
+          local name = vim.api.nvim_buf_get_name(bufnr)
+          if vim.fs.root(name, biome_config) then
+            return { "biome-check" }
+          end
+          return fallback
+        end
+      end
+
+      local fts =
+        { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc", "css" }
+
       opts.formatters_by_ft = opts.formatters_by_ft or {}
-      for _, ft in ipairs(biome_fts) do
-        opts.formatters_by_ft[ft] = { "biome" }
+      for _, ft in ipairs(fts) do
+        opts.formatters_by_ft[ft] = biome_or({ "prettier" })
       end
     end,
   },
