@@ -20,6 +20,7 @@ HUNK="$CFG/hunk/config.toml"
 LAZYGIT="$CFG/lazygit/config.yml"
 OBSIDIAN="$HOME/anton_lab/.obsidian/appearance.json"
 OPENCODE_TUI="$CFG/opencode/tui.json"
+GRAM="$CFG/gram/settings.jsonc"
 GITCONFIG="$HOME/.gitconfig"
 VIMRC="$HOME/.vimrc"
 
@@ -85,8 +86,8 @@ if anchor '^local theme = "[^"]*"' "$SB" 'sketchybar'; then
 fi
 
 # --- tmux ---
-if anchor '@tokyo-night-tmux_theme "[a-z]+"' "$TMUX_CONF" 'tmux theme'; then
-  sed -i '' -E "s/@tokyo-night-tmux_theme \"[a-z]+\"/@tokyo-night-tmux_theme \"$TMUX_THEME\"/" "$TMUX_CONF"
+if anchor '@tokyo-night-tmux_theme "[a-z-]+"' "$TMUX_CONF" 'tmux theme'; then
+  sed -i '' -E "s/@tokyo-night-tmux_theme \"[a-z-]+\"/@tokyo-night-tmux_theme \"$TMUX_THEME\"/" "$TMUX_CONF"
 fi
 if anchor 'set -g mode-style "[^"]*"' "$TMUX_CONF" 'tmux mode-style'; then
   sed -i '' -E "s|set -g mode-style \"[^\"]*\"|set -g mode-style \"$TMUX_MODE\"|" "$TMUX_CONF"
@@ -151,6 +152,11 @@ if anchor '"theme":' "$OPENCODE_TUI" 'opencode'; then
   sed -i '' -E "s|\"theme\": \"[^\"]*\"|\"theme\": \"$PALETTE\"|" "$OPENCODE_TUI"
 fi
 
+# --- gram (watches its settings file, applies live) ---
+if [[ -n "${GRAM_THEME:-}" ]] && anchor '^  "theme":' "$GRAM" 'gram'; then
+  sed -i '' -E "s|^  \"theme\": \"[^\"]*\"|  \"theme\": \"$GRAM_THEME\"|" "$GRAM"
+fi
+
 # --- git-delta: swap the included palette gitconfig (next diff) ---
 if anchor 'path = .*/git/.*\.gitconfig' "$GITCONFIG" 'git-delta'; then
   sed -i '' -E "s|^([[:space:]]*path = ).*/git/.*\.gitconfig|\1~/.config/git/$PALETTE.gitconfig|" "$GITCONFIG"
@@ -196,7 +202,7 @@ if command -v gum >/dev/null 2>&1; then
   gum style --foreground 10 --border rounded --border-foreground 10 \
     --align left --padding "0 2" --margin "1 0" \
     "theme -> $target" \
-    "sketchybar tmux nvim borders  live" \
+    "sketchybar tmux nvim borders gram  live" \
     "hlchunk btop yazi lazygit opencode  next launch" \
     "bat hunk delta  next call" \
     "obsidian  restart" \

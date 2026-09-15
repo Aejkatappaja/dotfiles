@@ -100,6 +100,32 @@ case $SELECTED_THEME in
   )
   ;;
 
+"kintsugi-flared")
+  # Kintsugi Dark Flared, from the Zed theme bundled in Gram.app.
+  # "blue" is the plugin's accent slot, so it holds the theme's orange.
+  declare -A THEME=(
+    ["background"]="#292928"
+    ["foreground"]="#BCAC8F"
+    ["black"]="#444444"
+    ["blue"]="#E08542"
+    ["cyan"]="#678E87"
+    ["green"]="#a3be8c"
+    ["magenta"]="#b3a3d3"
+    ["red"]="#D66848"
+    ["white"]="#BCAC8F"
+    ["yellow"]="#DBAD49"
+
+    ["bblack"]="#2a2a28"
+    ["bblue"]="#EBA96C"
+    ["bcyan"]="#798283"
+    ["bgreen"]="#c3de9c"
+    ["bmagenta"]="#d3a3d3"
+    ["bred"]="#C97D7D"
+    ["bwhite"]="#7F7B66"
+    ["byellow"]="#ebcb8b"
+  )
+  ;;
+
 *)
   # Default to night theme
   declare -A THEME=(

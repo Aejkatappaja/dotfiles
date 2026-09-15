@@ -35,3 +35,6 @@ wallpapers/*
 !wallpapers/tangerines.jpg
 !wallpapers/stellar_sora.png
 !wallpapers/current-theme.jpg
+
+# local-only: pre-edit backups of gram settings
+gram/*.bak
