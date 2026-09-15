@@ -86,8 +86,8 @@ if anchor '^local theme = "[^"]*"' "$SB" 'sketchybar'; then
 fi
 
 # --- tmux ---
-if anchor '@tokyo-night-tmux_theme "[a-z]+"' "$TMUX_CONF" 'tmux theme'; then
-  sed -i '' -E "s/@tokyo-night-tmux_theme \"[a-z]+\"/@tokyo-night-tmux_theme \"$TMUX_THEME\"/" "$TMUX_CONF"
+if anchor '@tokyo-night-tmux_theme "[a-z-]+"' "$TMUX_CONF" 'tmux theme'; then
+  sed -i '' -E "s/@tokyo-night-tmux_theme \"[a-z-]+\"/@tokyo-night-tmux_theme \"$TMUX_THEME\"/" "$TMUX_CONF"
 fi
 if anchor 'set -g mode-style "[^"]*"' "$TMUX_CONF" 'tmux mode-style'; then
   sed -i '' -E "s|set -g mode-style \"[^\"]*\"|set -g mode-style \"$TMUX_MODE\"|" "$TMUX_CONF"

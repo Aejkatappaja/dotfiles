@@ -91,7 +91,9 @@ local themes = {
 	},
 }
 
-local t = themes[theme]
+-- themes not defined here (e.g. kintsugi-flared, set by bin/theme) fall back
+-- to cendre rather than indexing nil and taking the whole bar down.
+local t = themes[theme] or themes.cendre
 
 return {
 	black = t.black,
