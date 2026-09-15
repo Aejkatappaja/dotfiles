@@ -1,0 +1,207 @@
+// Gram settings
+//
+// For information on how to configure Gram, see the Gram
+// documentation: gram://docs/configuring-gram
+//
+// To see all of Gram's default settings without changing your
+// custom settings, run `gram: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // --- Gram-specific: no binary is downloaded without explicit permission
+  "node": {
+    "allow_binary_download": true,
+    "allow_npm_install": true,
+    "allow_prettier_download": true
+  },
+
+  "lsp": {
+    // pre-authorized downloads, batch
+    "gopls": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "taplo": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "ruff": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "basedpyright": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "zls": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "clangd": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "yaml-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "vscode-html-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "marksman": {
+      "binary": {
+        "allow_binary_download": true
+      }
+    },
+    "lua-language-server": {
+      "binary": {
+        "enable_auto_updates": true,
+        "ignore_system_version": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "json-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "eslint": {
+      "binary": {
+        "ignore_system_version": true,
+        "enable_auto_updates": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "vtsls": {
+      "binary": {
+        "enable_auto_updates": true,
+        "ignore_system_version": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true,
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": "all",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+          "includeInlayFunctionParameterTypeHints": true,
+          "includeInlayVariableTypeHints": true,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": true,
+          "includeInlayFunctionLikeReturnTypeHints": true,
+          "includeInlayEnumMemberValueHints": true,
+        },
+      },
+    },
+    "tailwindcss-language-server": {
+      "binary": {
+        "enable_auto_updates": true,
+        "ignore_system_version": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "rust-analyzer": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "initialization_options": {
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true,
+          },
+          "closureReturnTypeHints": {
+            "enable": "always",
+          },
+        },
+      },
+    },
+  },
+
+  // --- carried over from ~/.config/zed/settings.json
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "agent": {
+    "dock": "left",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "edit_predictions": {
+    "provider": "none",
+  },
+  "vim_mode": false,
+  "base_keymap": "VSCode",
+
+  "project_panel": {
+    "folder_icons": true,
+    "file_icons": true,
+    "dock": "right",
+  },
+
+  "gutter": {
+    "line_numbers": true,
+    "folds": true,
+  },
+
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+  },
+
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+  },
+
+  "buffer_font_size": 18,
+  "buffer_font_features": {
+    "calt": true,
+    "ligd": true,
+  },
+  "buffer_font_family": "TX-02",
+
+  "ui_font_size": 16.0,
+  "ui_font_features": {
+    "calt": true,
+  },
+  "ui_font_family": "TX-02",
+
+  "auto_update": true,
+  "format_on_save": "on",
+
+  "theme": "cendre",
+  "icon_theme": "Catppuccin Mocha",
+
+  "preferred_line_length": 120,
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "terminal": {
+    "dock": "bottom",
+    "font_size": 15,
+    "copy_on_select": true,
+    "font_family": "GeistMono Nerd Font Mono",
+  },
+  "tabs": {
+    "close_position": "right",
+    "git_status": true,
+  },
+}
