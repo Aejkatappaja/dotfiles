@@ -1,0 +1,16 @@
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --color=border:#E08542 \
+  --color=fg:#BCAC8F \
+  --color=gutter:#131314 \
+  --color=header:#E08542 \
+  --color=hl+:#DBAD49 \
+  --color=hl:#DBAD49 \
+  --color=info:#75715e \
+  --color=marker:#D66848 \
+  --color=pointer:#D66848 \
+  --color=prompt:#E08542 \
+  --color=query:#dddddd:regular \
+  --color=scrollbar:#E08542 \
+  --color=separator:#7f7b66 \
+  --color=spinner:#D66848 \
+"

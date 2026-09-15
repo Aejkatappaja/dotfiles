@@ -9,6 +9,8 @@ options=(
   active_color=0xFFEA9875
   # SORA
   # active_color=0xFF80C8E0
+  # KINTSUGI FLARED
+  # active_color=0xFFE08542
 
   whitelist="ghostty,kitty"
 )
